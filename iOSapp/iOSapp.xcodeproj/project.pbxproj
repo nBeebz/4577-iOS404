@@ -13,6 +13,8 @@
 		1BFDC0271A78E77600703708 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0261A78E77600703708 /* Images.xcassets */; };
 		1BFDC02A1A78E77600703708 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0281A78E77600703708 /* LaunchScreen.xib */; };
 		1BFDC0361A78E77600703708 /* iOSappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC0351A78E77600703708 /* iOSappTests.swift */; };
+		DEE0136C1A81F472007FFD61 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136B1A81F472007FFD61 /* MasterViewController.swift */; };
+		DEE0136E1A81F4A5007FFD61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		1BFDC02F1A78E77600703708 /* iOSappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFDC0341A78E77600703708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BFDC0351A78E77600703708 /* iOSappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSappTests.swift; sourceTree = "<group>"; };
+		DEE0136B1A81F472007FFD61 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				1BFDC0261A78E77600703708 /* Images.xcassets */,
 				1BFDC0281A78E77600703708 /* LaunchScreen.xib */,
 				1BFDC01D1A78E77600703708 /* Supporting Files */,
+				DEE0136B1A81F472007FFD61 /* MasterViewController.swift */,
+				DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */,
 			);
 			path = iOSapp;
 			sourceTree = "<group>";
@@ -214,6 +220,8 @@
 			files = (
 				1BFDC0221A78E77600703708 /* ViewController.swift in Sources */,
 				1BFDC0201A78E77600703708 /* AppDelegate.swift in Sources */,
+				DEE0136C1A81F472007FFD61 /* MasterViewController.swift in Sources */,
+				DEE0136E1A81F4A5007FFD61 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +413,7 @@
 				1BFDC03B1A78E77600703708 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BFDC03C1A78E77600703708 /* Build configuration list for PBXNativeTarget "iOSappTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +422,7 @@
 				1BFDC03E1A78E77600703708 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
