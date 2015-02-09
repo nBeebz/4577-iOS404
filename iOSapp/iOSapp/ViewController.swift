@@ -31,5 +31,22 @@ class ViewController: UIViewController {
     @IBAction func loginButtonPressed(sender: AnyObject) {
         tempLabel.text = "loggin in..."
     }
+    
+    @IBOutlet weak var segmentController: UISegmentedControl!
+    @IBOutlet weak var choiceLabel: UILabel!
+    
+    @IBAction func segmentChanger(sender: UISegmentedControl) {
+        switch 	segmentController.selectedSegmentIndex
+        {
+        case 0 :
+            choiceLabel.text = 	"News and stuff"
+            break
+        case 1 :
+            choiceLabel.text = "Info about the course"
+            break
+        default :
+            break
+        }
+    }
 }
 
