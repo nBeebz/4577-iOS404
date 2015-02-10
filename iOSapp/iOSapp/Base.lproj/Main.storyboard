@@ -193,6 +193,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="eCw-7a-e8G" kind="showDetail" id="hHJ-HR-S9U"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -261,7 +264,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="qHs-IC-VSj" kind="relationship" relationship="rootViewController" id="rmS-FT-V4o"/>
+                        <segue destination="jtJ-Am-MRn" kind="relationship" relationship="rootViewController" id="npB-k9-Lar"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Vo-IM-PLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -353,5 +356,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="FI2-O8-e3h"/>
+        <segue reference="lMe-E2-Nhc"/>
     </inferredMetricsTieBreakers>
 </document>
