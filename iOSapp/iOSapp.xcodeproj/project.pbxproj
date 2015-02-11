@@ -13,8 +13,7 @@
 		1BFDC0271A78E77600703708 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0261A78E77600703708 /* Images.xcassets */; };
 		1BFDC02A1A78E77600703708 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0281A78E77600703708 /* LaunchScreen.xib */; };
 		1BFDC0361A78E77600703708 /* iOSappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC0351A78E77600703708 /* iOSappTests.swift */; };
-		DE7244A01A8AA77000EA3B2E /* subset.png in Resources */ = {isa = PBXBuildFile; fileRef = DE72449F1A8AA77000EA3B2E /* subset.png */; };
-		DE7244A21A8AA86200EA3B2E /* subset copy.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7244A11A8AA86200EA3B2E /* subset copy.png */; };
+		1C623DC51A8ADC240067ACEF /* subset.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C623DC41A8ADC240067ACEF /* subset.png */; };
 		DEE0136C1A81F472007FFD61 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136B1A81F472007FFD61 /* MasterViewController.swift */; };
 		DEE0136E1A81F4A5007FFD61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,8 +39,7 @@
 		1BFDC02F1A78E77600703708 /* iOSappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFDC0341A78E77600703708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BFDC0351A78E77600703708 /* iOSappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSappTests.swift; sourceTree = "<group>"; };
-		DE72449F1A8AA77000EA3B2E /* subset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subset.png; path = ../../../../../../Desktop/subset.png; sourceTree = "<group>"; };
-		DE7244A11A8AA86200EA3B2E /* subset copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "subset copy.png"; path = "../../../../../../Desktop/subset copy.png"; sourceTree = "<group>"; };
+		1C623DC41A8ADC240067ACEF /* subset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subset.png; sourceTree = "<group>"; };
 		DEE0136B1A81F472007FFD61 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,8 +83,7 @@
 		1BFDC01C1A78E77600703708 /* iOSapp */ = {
 			isa = PBXGroup;
 			children = (
-				DE7244A11A8AA86200EA3B2E /* subset copy.png */,
-				DE72449F1A8AA77000EA3B2E /* subset.png */,
+				1C623DC41A8ADC240067ACEF /* subset.png */,
 				1BFDC01F1A78E77600703708 /* AppDelegate.swift */,
 				1BFDC0211A78E77600703708 /* ViewController.swift */,
 				1BFDC0231A78E77600703708 /* Main.storyboard */,
@@ -207,9 +204,8 @@
 			files = (
 				1BFDC0251A78E77600703708 /* Main.storyboard in Resources */,
 				1BFDC02A1A78E77600703708 /* LaunchScreen.xib in Resources */,
-				DE7244A21A8AA86200EA3B2E /* subset copy.png in Resources */,
 				1BFDC0271A78E77600703708 /* Images.xcassets in Resources */,
-				DE7244A01A8AA77000EA3B2E /* subset.png in Resources */,
+				1C623DC51A8ADC240067ACEF /* subset.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
