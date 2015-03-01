@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1BFDC0201A78E77600703708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC01F1A78E77600703708 /* AppDelegate.swift */; };
-		1BFDC0221A78E77600703708 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC0211A78E77600703708 /* ViewController.swift */; };
+		1BFDC0221A78E77600703708 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC0211A78E77600703708 /* LoginViewController.swift */; };
 		1BFDC0251A78E77600703708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0231A78E77600703708 /* Main.storyboard */; };
 		1BFDC0271A78E77600703708 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0261A78E77600703708 /* Images.xcassets */; };
 		1BFDC02A1A78E77600703708 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0281A78E77600703708 /* LaunchScreen.xib */; };
 		1BFDC0361A78E77600703708 /* iOSappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC0351A78E77600703708 /* iOSappTests.swift */; };
+		1C1D1BFA1AA2D16D0094E9D3 /* CourseMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1BF91AA2D16D0094E9D3 /* CourseMainController.swift */; };
 		1C623DC51A8ADC240067ACEF /* subset.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C623DC41A8ADC240067ACEF /* subset.png */; };
-		DEE0136C1A81F472007FFD61 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136B1A81F472007FFD61 /* MasterViewController.swift */; };
+		DEE0136C1A81F472007FFD61 /* TermViewMasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136B1A81F472007FFD61 /* TermViewMasterController.swift */; };
 		DEE0136E1A81F4A5007FFD61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,15 +33,16 @@
 		1BFDC01A1A78E77600703708 /* iOSapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFDC01E1A78E77600703708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BFDC01F1A78E77600703708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1BFDC0211A78E77600703708 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1BFDC0211A78E77600703708 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1BFDC0241A78E77600703708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BFDC0261A78E77600703708 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1BFDC0291A78E77600703708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1BFDC02F1A78E77600703708 /* iOSappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFDC0341A78E77600703708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BFDC0351A78E77600703708 /* iOSappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSappTests.swift; sourceTree = "<group>"; };
+		1C1D1BF91AA2D16D0094E9D3 /* CourseMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMainController.swift; sourceTree = "<group>"; };
 		1C623DC41A8ADC240067ACEF /* subset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subset.png; sourceTree = "<group>"; };
-		DEE0136B1A81F472007FFD61 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		DEE0136B1A81F472007FFD61 /* TermViewMasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermViewMasterController.swift; sourceTree = "<group>"; };
 		DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,13 +87,14 @@
 			children = (
 				1C623DC41A8ADC240067ACEF /* subset.png */,
 				1BFDC01F1A78E77600703708 /* AppDelegate.swift */,
-				1BFDC0211A78E77600703708 /* ViewController.swift */,
+				1BFDC0211A78E77600703708 /* LoginViewController.swift */,
+				DEE0136B1A81F472007FFD61 /* TermViewMasterController.swift */,
+				DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */,
+				1C1D1BF91AA2D16D0094E9D3 /* CourseMainController.swift */,
 				1BFDC0231A78E77600703708 /* Main.storyboard */,
 				1BFDC0261A78E77600703708 /* Images.xcassets */,
 				1BFDC0281A78E77600703708 /* LaunchScreen.xib */,
 				1BFDC01D1A78E77600703708 /* Supporting Files */,
-				DEE0136B1A81F472007FFD61 /* MasterViewController.swift */,
-				DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */,
 			);
 			path = iOSapp;
 			sourceTree = "<group>";
@@ -223,10 +226,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BFDC0221A78E77600703708 /* ViewController.swift in Sources */,
+				1BFDC0221A78E77600703708 /* LoginViewController.swift in Sources */,
 				1BFDC0201A78E77600703708 /* AppDelegate.swift in Sources */,
-				DEE0136C1A81F472007FFD61 /* MasterViewController.swift in Sources */,
+				DEE0136C1A81F472007FFD61 /* TermViewMasterController.swift in Sources */,
 				DEE0136E1A81F4A5007FFD61 /* DetailViewController.swift in Sources */,
+				1C1D1BFA1AA2D16D0094E9D3 /* CourseMainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

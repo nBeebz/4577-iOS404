@@ -1,20 +1,20 @@
 //
-//  MasterViewController.swift
+//  TermViewMasterController.swift
 //  iOSapp
 //
-//  Created by 킷탄 on 2015-02-03.
+//  Created by Henry on 2015-02-03.
 //  Copyright (c) 2015 Team 404. All rights reserved.
 //
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class TermViewMasterController: UITableViewController {
     
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
     let testVal = "COMP 4977"
-    var classes:[String] = ["COMP 4711", "COMP 4976", "COMP 4977", "COMP 4560"]
-    //var counter = 0
+    var classes:[String] = ["COMP 4977", "COMP 4976", "COMP 4735", "COMP 4711", "COMP 4560", "BLAW 3600"]
+    var index = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +26,7 @@ class MasterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
@@ -80,8 +80,11 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         let object = objects[indexPath.row] as String
-        cell.textLabel!.text = classes[0]
         
+        if (index < classes.count) {
+            cell.textLabel!.text = classes[index++]
+        }
+            
         return cell
     }
     

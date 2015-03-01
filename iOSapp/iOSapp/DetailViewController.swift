@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  iOSapp
 //
-//  Created by 킷탄 on 2015-02-03.
+//  Created by Henry on 2015-02-03.
 //  Copyright (c) 2015 Team 404. All rights reserved.
 //
 
