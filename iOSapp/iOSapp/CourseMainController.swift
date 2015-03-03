@@ -10,7 +10,6 @@ import UIKit
 
 class CourseMainController: UIViewController
 {
-    @IBOutlet weak var courseLabel: UILabel!
     @IBOutlet weak var choiceLabel: UILabel!
     @IBOutlet weak var segmentController: UISegmentedControl!
 
@@ -41,7 +40,7 @@ class CourseMainController: UIViewController
             case 1 :
                 self.newsView.hidden = true;
                 self.infoView.hidden = false;
-                choiceLabel.text = "Info about the course"
+                //choiceLabel.text = "Info about the course"
                 infoLabel.text = " Instructor: \n\t \(instrName) \n\t \(instrEmail) \n\t \(office) \n\n Office Hours: \(officeHrs) \n\n Evaluation Breakdown: \(breakdown)"
                 break
             default :
@@ -54,12 +53,14 @@ class CourseMainController: UIViewController
     {
         super.viewDidLoad()
         courseNo = "COMP 4711"
-        courseLabel.text = courseNo
         instrName = "Jim Parry"
         instrEmail = "jim_parry@bcit.ca"
         office = "SW2 124"
         officeHrs = "\n\t T: 1:30 - 2:30 \n\t Th: 1:30 - 3:30"
         breakdown = "\n\t Assignments 25% \n\t Labs 30% \n\t Midterm 20% \n\t Final Exam 25%"
+        
+        // set the navigation bar title to show the course
+        self.navigationItem.title = courseNo
     }
 
     override func didReceiveMemoryWarning()

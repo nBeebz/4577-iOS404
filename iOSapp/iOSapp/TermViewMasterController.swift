@@ -86,7 +86,7 @@ class TermViewMasterController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        let object = objects[indexPath.row] as String
+        //let object = objects[indexPath.row] as String
         
         if (index < classes.count) {
             cell.textLabel!.text = classes[index++]
