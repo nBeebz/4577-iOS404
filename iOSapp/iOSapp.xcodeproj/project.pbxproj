@@ -13,6 +13,8 @@
 		1BFDC0271A78E77600703708 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0261A78E77600703708 /* Images.xcassets */; };
 		1BFDC02A1A78E77600703708 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0281A78E77600703708 /* LaunchScreen.xib */; };
 		1BFDC0361A78E77600703708 /* iOSappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC0351A78E77600703708 /* iOSappTests.swift */; };
+		1C12BA551AA58EC1009E2D0B /* info.html in Resources */ = {isa = PBXBuildFile; fileRef = 1C12BA541AA58EC1009E2D0B /* info.html */; };
+		1C12BA571AA58FC3009E2D0B /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 1C12BA561AA58FC3009E2D0B /* style.css */; };
 		1C1D1BFA1AA2D16D0094E9D3 /* CourseMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1BF91AA2D16D0094E9D3 /* CourseMainController.swift */; };
 		1C623DC51A8ADC240067ACEF /* subset.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C623DC41A8ADC240067ACEF /* subset.png */; };
 		DEE0136C1A81F472007FFD61 /* TermViewMasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136B1A81F472007FFD61 /* TermViewMasterController.swift */; };
@@ -40,6 +42,8 @@
 		1BFDC02F1A78E77600703708 /* iOSappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFDC0341A78E77600703708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BFDC0351A78E77600703708 /* iOSappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSappTests.swift; sourceTree = "<group>"; };
+		1C12BA541AA58EC1009E2D0B /* info.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info.html; sourceTree = "<group>"; };
+		1C12BA561AA58FC3009E2D0B /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		1C1D1BF91AA2D16D0094E9D3 /* CourseMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMainController.swift; sourceTree = "<group>"; };
 		1C623DC41A8ADC240067ACEF /* subset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subset.png; sourceTree = "<group>"; };
 		DEE0136B1A81F472007FFD61 /* TermViewMasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermViewMasterController.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 		1BFDC0111A78E77600703708 = {
 			isa = PBXGroup;
 			children = (
+				1C12BA561AA58FC3009E2D0B /* style.css */,
+				1C12BA541AA58EC1009E2D0B /* info.html */,
 				1BFDC01C1A78E77600703708 /* iOSapp */,
 				1BFDC0321A78E77600703708 /* iOSappTests */,
 				1BFDC01B1A78E77600703708 /* Products */,
@@ -206,8 +212,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BFDC0251A78E77600703708 /* Main.storyboard in Resources */,
+				1C12BA571AA58FC3009E2D0B /* style.css in Resources */,
 				1BFDC02A1A78E77600703708 /* LaunchScreen.xib in Resources */,
 				1BFDC0271A78E77600703708 /* Images.xcassets in Resources */,
+				1C12BA551AA58EC1009E2D0B /* info.html in Resources */,
 				1C623DC51A8ADC240067ACEF /* subset.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

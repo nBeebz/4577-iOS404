@@ -16,6 +16,7 @@ class CourseMainController: UIViewController
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var newsView: UIView!
     @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var infoWebView: UIWebView!
     
     var courseNo: String!
     var courseName: String!
@@ -58,6 +59,11 @@ class CourseMainController: UIViewController
         office = "SW2 124"
         officeHrs = "\n\t T: 1:30 - 2:30 \n\t Th: 1:30 - 3:30"
         breakdown = "\n\t Assignments 25% \n\t Labs 30% \n\t Midterm 20% \n\t Final Exam 25%"
+        
+        let localFile = NSBundle.mainBundle().URLForResource("info", withExtension: "html")
+        let myRequest = NSURLRequest(URL: localFile!);
+        infoWebView.loadRequest(myRequest)
+        
         
         // set the navigation bar title to show the course
         self.navigationItem.title = courseNo
