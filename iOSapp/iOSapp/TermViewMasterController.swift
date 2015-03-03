@@ -13,7 +13,7 @@ class TermViewMasterController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
     let testVal = "COMP 4977"
-    var classes:[String] = ["COMP 4977", "COMP 4976", "COMP 4735", "COMP 4711", "COMP 4560", "BLAW 3600"]
+    var classes:[String]!
     var index = 0
     
     override func awakeFromNib() {
@@ -36,6 +36,7 @@ class TermViewMasterController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
+        classes = self.getClasses()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,9 +51,15 @@ class TermViewMasterController: UITableViewController {
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
     }
-    
+
+    func getClasses() -> [String]
+    {
+        //LOOK HERE NAV
+        var c:[String] = ["COMP 4977", "COMP 4976", "COMP 4735", "COMP 4711", "COMP 4560", "BLAW 3600"]
+        return c
+    }
     // MARK: - Segues
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showDetail" {
