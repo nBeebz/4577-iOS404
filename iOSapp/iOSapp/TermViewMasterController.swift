@@ -28,7 +28,7 @@ class TermViewMasterController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         //let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         
