@@ -77,6 +77,7 @@ class TermViewMasterController: UITableViewController {
     func setClasses(c:[String])
     {
         self.classes = c
+        // HENRY, UPDATE AND SHOW THE CLASS LIST HERE
     }
     // MARK: - Segues
 
