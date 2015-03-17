@@ -19,6 +19,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
+        
+        if( self.valid() )
+            //TRIGGER SEGUE HERE
+        
         tempLabel.text = "loggin in..."
     }
     
@@ -31,6 +35,11 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func valid() -> Bool
+    {
+        return true;
     }
 }
 
