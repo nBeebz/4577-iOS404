@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -301,7 +301,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EL-ce-vLr" userLabel="InfoView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-L5-crL">
+                                    <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwi-fb-s17">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="15" y="8" width="370" height="445"/>
+                                        </variation>
+                                    </webView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-L5-crL">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -310,25 +317,46 @@
                                             <rect key="frame" x="20" y="0.0" width="355" height="300"/>
                                         </variation>
                                     </label>
-                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwi-fb-s17">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-Yz-6eH">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextCell" textLabel="Uc0-Wg-6Gm" style="IBUITableViewCellStyleDefault" id="7v7-Ja-7rq">
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7v7-Ja-7rq" id="6s3-FR-N26">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uc0-Wg-6Gm">
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact">
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            </variation>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="15" y="8" width="370" height="445"/>
+                                            <rect key="frame" x="100" y="117" width="200" height="234"/>
                                         </variation>
-                                    </webView>
+                                    </tableView>
                                 </subviews>
                                 <variation key="default">
                                     <mask key="subviews">
-                                        <exclude reference="VY0-L5-crL"/>
                                         <exclude reference="Cwi-fb-s17"/>
+                                        <exclude reference="VY0-L5-crL"/>
+                                        <exclude reference="3Xp-Yz-6eH"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="135" width="400" height="467"/>
                                     <mask key="subviews">
-                                        <include reference="VY0-L5-crL"/>
                                         <include reference="Cwi-fb-s17"/>
+                                        <include reference="VY0-L5-crL"/>
+                                        <include reference="3Xp-Yz-6eH"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -442,6 +470,7 @@
                         <outlet property="infoWebView" destination="Cwi-fb-s17" id="4iK-CC-Ccx"/>
                         <outlet property="newsView" destination="QVz-5y-BXS" id="KhC-At-xgE"/>
                         <outlet property="segmentController" destination="q1o-da-Cts" id="kGH-3k-99C"/>
+                        <outlet property="tableView" destination="3Xp-Yz-6eH" id="uQg-UE-Os2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KY2-bP-5bc" sceneMemberID="firstResponder"/>

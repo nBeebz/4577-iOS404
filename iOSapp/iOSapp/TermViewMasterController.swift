@@ -12,9 +12,10 @@ class TermViewMasterController: UITableViewController {
     
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
-    let testVal = "COMP 4977"
+    let testVal = "COMP 4711"
     var classes:[String]!
     var index = 0
+    var selectedCourse: String!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,15 +63,29 @@ class TermViewMasterController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
+        //if segue.identifier == "showDetail"
+        //{
+            if let indexPath = self.tableView.indexPathForSelectedRow()
+            {
                 let object = objects[indexPath.row] as String
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
+                let navVC = segue.destinationViewController as UINavigationController
+                let detailVC = navVC.topViewController as DetailViewController
+                //let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+                //let courseInfoVC = navVC.viewControllers.first as CourseMainController
+                
+                //courseInfoVC.courseNo = object
+                //println("77 object: \(object)")
+                //println("78 courseInfoVC.courseNo: \(courseInfoVC.courseNo)")
+
+                detailVC.detailItem = object
+                detailVC.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                detailVC.navigationItem.leftItemsSupplementBackButton = true
+                
+                
             }
-        }
+        //println("\n line 85:  did not go into if statement?")
+        //}
+
     }
     
     // MARK: - Table View
@@ -83,13 +98,20 @@ class TermViewMasterController: UITableViewController {
         return objects.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        //let object = objects[indexPath.row] as String
+        let object = objects[indexPath.row] as String
         
         if (index < classes.count) {
+            
+            //selectedCourse = classes[index]
+            //println("108 selectedCourse: \(selectedCourse)")
+            //println("index: \(index) \n")
             cell.textLabel!.text = classes[index++]
+            //println(cell.textLabel!.text)
+            
         }
             
         return cell
