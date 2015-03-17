@@ -184,7 +184,6 @@
                     </view>
                     <connections>
                         <outlet property="idTextField" destination="OkH-jr-Ien" id="C97-Uf-k0I"/>
-                        <outlet property="label" destination="YHA-4d-YpX" id="r5C-xn-dNZ"/>
                         <outlet property="loginButton" destination="uyG-Yk-Mqh" id="9I9-lI-xg7"/>
                         <outlet property="pwdTextField" destination="6hF-SZ-4ea" id="Ky2-pC-7Qn"/>
                         <outlet property="tempLabel" destination="ccz-h0-Rkn" id="W5I-s5-k2d"/>

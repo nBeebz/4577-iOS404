@@ -12,6 +12,8 @@
 	<dict>
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
 		<string>https://github.com/Alamofire/Alamofire.git</string>
+		<key>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</key>
+		<string>https://github.com/lingoer/SwiftyJSON.git</string>
 		<key>EA04CBDDFC6E534AC21A0933B5943E0D11ADB44F</key>
 		<string>https://github.com/nBeebz/4577-iOS404</string>
 	</dict>
@@ -21,6 +23,8 @@
 	<dict>
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
 		<string>../../../../4577-iOS404/Alamofire</string>
+		<key>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</key>
+		<string>../../../../4577-iOS404/SwiftyJSON</string>
 		<key>EA04CBDDFC6E534AC21A0933B5943E0D11ADB44F</key>
 		<string>../../..</string>
 	</dict>
@@ -47,6 +51,14 @@
 			<string>EA04CBDDFC6E534AC21A0933B5943E0D11ADB44F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>iOSapp</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SwiftyJSON</string>
 		</dict>
 	</array>
 </dict>

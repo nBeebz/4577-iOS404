@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class TermViewMasterController: UITableViewController {
     
@@ -37,7 +38,7 @@ class TermViewMasterController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
-        classes = self.getClasses()
+        getClasses()
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,16 +54,29 @@ class TermViewMasterController: UITableViewController {
         
     }
 
-    func getClasses() -> [String]
+    func getClasses()
     {
         //LOOK HERE NAV
-        var request = Alamofire.request(.GET, "https://api.mongolab.com/api/1/databases/sandbox/collections/courses?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa" )
+        var req = Alamofire.request(.GET, "https://api.mongolab.com/api/1/databases/sandbox/collections/courses?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa" )
         
-        request.responseString { (request, response, body, error) in
+        req.responseJSON { (request, response, body, error) in
             // GET BODY HERE
+            var c:[String] = []
+            var array = JSON( body! ).arrayValue
+            let arr = JSON( body! ).arrayValue
+            println( arr[0]["_id"].stringValue )
+            
+            for obj in array{
+                c.append( obj["_id"].stringValue )
+            }
+            
+            self.setClasses( c )
         }
-        var c:[String] = ["COMP 4977", "COMP 4976", "COMP 4735", "COMP 4711", "COMP 4560", "BLAW 3600"]
-        return c
+    }
+    
+    func setClasses(c:[String])
+    {
+        self.classes = c
     }
     // MARK: - Segues
 
