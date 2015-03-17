@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class TermViewMasterController: UITableViewController {
     
@@ -55,6 +56,11 @@ class TermViewMasterController: UITableViewController {
     func getClasses() -> [String]
     {
         //LOOK HERE NAV
+        var request = Alamofire.request(.GET, "https://api.mongolab.com/api/1/databases/sandbox/collections/courses?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa" )
+        
+        request.responseString { (request, response, body, error) in
+            // GET BODY HERE
+        }
         var c:[String] = ["COMP 4977", "COMP 4976", "COMP 4735", "COMP 4711", "COMP 4560", "BLAW 3600"]
         return c
     }
