@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 
 class TermViewMasterController: UITableViewController {
     
@@ -78,6 +77,13 @@ class TermViewMasterController: UITableViewController {
     {
         self.classes = c
         // HENRY, UPDATE AND SHOW THE CLASS LIST HERE
+        var count = self.classes.count
+        for var i=0; i<count; ++i
+        {
+            objects.insertObject(classes[0], atIndex: 0)
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
     }
     // MARK: - Segues
 
