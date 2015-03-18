@@ -20,8 +20,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
         
-        if( self.valid() )
+        if( self.valid() ){
             //TRIGGER SEGUE HERE
+        }
         
         tempLabel.text = "loggin in..."
     }
