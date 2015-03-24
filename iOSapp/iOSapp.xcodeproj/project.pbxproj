@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1935A4831AC1334300C506E4 /* add139.png in Resources */ = {isa = PBXBuildFile; fileRef = 1935A4821AC1334300C506E4 /* add139.png */; };
 		1BFDC0201A78E77600703708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC01F1A78E77600703708 /* AppDelegate.swift */; };
 		1BFDC0221A78E77600703708 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFDC0211A78E77600703708 /* LoginViewController.swift */; };
 		1BFDC0251A78E77600703708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFDC0231A78E77600703708 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1935A4821AC1334300C506E4 /* add139.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add139.png; sourceTree = "<group>"; };
 		1BFDC01A1A78E77600703708 /* iOSapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFDC01E1A78E77600703708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BFDC01F1A78E77600703708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		1BFDC01D1A78E77600703708 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1935A4821AC1334300C506E4 /* add139.png */,
 				1BFDC01E1A78E77600703708 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -221,6 +224,7 @@
 				1C12BA571AA58FC3009E2D0B /* style.css in Resources */,
 				1BFDC02A1A78E77600703708 /* LaunchScreen.xib in Resources */,
 				1BFDC0271A78E77600703708 /* Images.xcassets in Resources */,
+				1935A4831AC1334300C506E4 /* add139.png in Resources */,
 				1C12BA551AA58EC1009E2D0B /* info.html in Resources */,
 				1C623DC51A8ADC240067ACEF /* subset.png in Resources */,
 			);
