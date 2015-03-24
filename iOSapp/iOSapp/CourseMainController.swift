@@ -74,6 +74,39 @@ class CourseMainController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
+    @IBOutlet weak var addButton: UIButton!
+    @IBAction func addNews(sender: AnyObject) {
+        let alertController : UIAlertController = UIAlertController(
+            title: "Add News", message: "", preferredStyle: .Alert);
+        
+        let newsAction = UIAlertAction(title: "Add", style: .Default) { (_) in
+            let titleTextField = alertController.textFields![0] as UITextField
+            let newsTextField = alertController.textFields![1] as UITextField
+            
+            self.add(titleTextField.text, news: newsTextField.text)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in
+            println("cancel")
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "Title"
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "News"
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(newsAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func add(title: String, news: String) {
+        println("Title: \(title) with news: \(news)")
+    }
 
     /*
     // MARK: - Navigation
