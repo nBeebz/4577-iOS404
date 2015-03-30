@@ -207,3 +207,5 @@ xcuserdata
 # pull your changes to other's repo"
 #
 *.xccheckout
+
+iOSapp/iOSapp.xcodeproj/project.xcworkspace/*
