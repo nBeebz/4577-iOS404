@@ -11,25 +11,51 @@ import Alamofire
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var idTextField: UITextField!
-    @IBOutlet weak var pwdTextField: UITextField!
+    var instructor:Bool = false;
     
-    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet var logoView: UIImageView!
+    
+    @IBOutlet weak var idTextField: UITextField!
+
+    @IBOutlet weak var pwdTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
         
-        if( self.valid() ){
-            //TRIGGER SEGUE HERE
-        }
-        
-        tempLabel.text = "loggin in..."
     }
+    
+    @IBAction func login(sender: AnyObject) {
+        var user = idTextField.text
+        var password = pwdTextField.text
+        if( countElements(user) == 0 || countElements(password) == 0 ){
+            return;
+        }
+        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/students?q={\"_id\":\"" + user + "\"}&fo=true&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa";
+        url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        
+        let req = Alamofire.request(.GET, url )
+        
+        req.responseJSON { (request, response, body, error) in
+            // GET BODY HERE
+            var user = JSON( body! )
+            let pwd = user["password"].stringValue
+            if( pwd == password ){
+                if( user["type"].stringValue == "instructor" ){
+                    self.performSegueWithIdentifier("iTerm", sender: nil);
+                }
+                else{
+                    self.performSegueWithIdentifier("sTerm", sender: nil);
+                }
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        logoView.image = UIImage(named: "subset.png")
         
     }
     
@@ -38,9 +64,6 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func valid() -> Bool
-    {
-        return true;
-    }
+
 }
 

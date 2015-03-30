@@ -15,6 +15,7 @@ class TermViewMasterController: UITableViewController {
     var objects = NSMutableArray()
     let testVal = "COMP 4711"
     var classes:[String]!
+    var descriptions: [String]!
     var index = 0
     var selectedCourse: String!
     
@@ -62,21 +63,23 @@ class TermViewMasterController: UITableViewController {
         req.responseJSON { (request, response, body, error) in
             // GET BODY HERE
             var c:[String] = []
+            var d:[String] = []
             var array = JSON( body! ).arrayValue
             let arr = JSON( body! ).arrayValue
-            println( arr[0]["_id"].stringValue )
-            
+
             for obj in array{
                 c.append( obj["_id"].stringValue )
+                d.append( obj["name"].stringValue )
             }
-            
-            self.setClasses( c )
+            self.setClasses( c, _descriptions:d )
         }
     }
     
-    func setClasses(c:[String])
+    func setClasses(_classes:[String], _descriptions:[String])
     {
-        self.classes = c
+        self.classes = _classes
+        self.descriptions = _descriptions
+
         // HENRY, UPDATE AND SHOW THE CLASS LIST HERE
         var count = self.classes.count
         for var i=0; i<count; ++i
