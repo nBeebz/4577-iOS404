@@ -19,13 +19,32 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
-        
-        if( self.valid() ){
-            //TRIGGER SEGUE HERE
+        var user = idTextField.text
+        var password = pwdTextField.text
+        if( countElements(user) == 0 || countElements(password) == 0 ){
+            return;
         }
+        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/students?q={\"_id\":\"" + user + "\"}&fo=true&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa";
+        url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let req = request(.GET, url )
         
-        tempLabel.text = "loggin in..."
+        req.responseJSON { (request, response, body, error) in
+            // GET BODY HERE
+            var user = JSON( body! )
+            let pwd = user["password"].stringValue
+            println(user["name"].stringValue)
+            if( pwd == password ){
+                if( user["type"].stringValue == "instructor" ){
+                    self.performSegueWithIdentifier("iTerm", sender: nil);
+                }
+                else{
+                    self.performSegueWithIdentifier("sTerm", sender: nil);
+                }
+            }
+        }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
