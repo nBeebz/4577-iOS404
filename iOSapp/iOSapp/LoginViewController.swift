@@ -21,9 +21,13 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(sender: AnyObject) {
         var user = idTextField.text
         var password = pwdTextField.text
+        
+        // no userID or password provided
         if( countElements(user) == 0 || countElements(password) == 0 ){
+            tempLabel.text = "Please enter a user ID and password"
             return;
         }
+        
         var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/students?q={\"_id\":\"" + user + "\"}&fo=true&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa";
         url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         let req = request(.GET, url )
@@ -32,14 +36,19 @@ class LoginViewController: UIViewController {
             // GET BODY HERE
             var user = JSON( body! )
             let pwd = user["password"].stringValue
-            println(user["name"].stringValue)
-            if( pwd == password ){
+            //println(user["name"].stringValue)
+            
+            
+            if( pwd == password ) {
+                self.tempLabel.text = "Loggin in..."
                 if( user["type"].stringValue == "instructor" ){
                     self.performSegueWithIdentifier("iTerm", sender: nil);
                 }
                 else{
                     self.performSegueWithIdentifier("sTerm", sender: nil);
                 }
+            } else {
+                self.tempLabel.text = "Invalid user ID or password"
             }
         }
     }
