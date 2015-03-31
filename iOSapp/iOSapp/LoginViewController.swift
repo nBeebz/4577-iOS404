@@ -9,7 +9,7 @@
 import UIKit
 //import Alamofire
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var pwdTextField: UITextField!
@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
         
         // no userID or password provided
         if( countElements(user) == 0 || countElements(password) == 0 ){
-            tempLabel.text = "Please enter a user ID and password"
+            tempLabel.text = "Enter an ID and password"
             return;
         }
         
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
                     self.performSegueWithIdentifier("sTerm", sender: nil);
                 }
             } else {
-                self.tempLabel.text = "Invalid user ID or password"
+                self.tempLabel.text = "Invalid ID or password"
             }
         }
     }
@@ -57,18 +57,22 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
+        self.pwdTextField.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func valid() -> Bool
-    {
+    func valid() -> Bool {
         return true;
+    }
+    
+    func textFieldShouldReturn (pwdTextField: UITextField!) -> Bool
+    {
+        self.view.endEditing(true)
+        return false
     }
 }
 
