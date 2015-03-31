@@ -84,6 +84,7 @@ class TermViewMasterController: UITableViewController {
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
+        
     }
     // MARK: - Segues
 
@@ -118,7 +119,7 @@ class TermViewMasterController: UITableViewController {
         if (index < classes.count) {
             cell.textLabel!.text = classes[index++]
         }
-            
+        
         return cell
     }
     
