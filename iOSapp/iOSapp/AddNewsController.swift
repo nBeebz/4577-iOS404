@@ -43,8 +43,9 @@ class AddNewsController: UIViewController
         println(Data.sharedInstance.courseNo)
         println(Data.sharedInstance.username)
         
-        var json:JSON = ["course":Data.sharedInstance.courseNo, "name":Data.sharedInstance.username,"title":titleField.text, "content":contentField.text, "date":dateString]
-        request(.POST, "https://api.mongolab.com/api/1/databases/sandbox/collections/news?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa", parameters: json, encoding: .JSON)
+        var json = ["course":Data.sharedInstance.courseNo, "name":Data.sharedInstance.username,"title":titleField.text, "content":contentField.text, "date":dateString]
+        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/news?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa"
+        let req = request(.POST, url, parameters: json, encoding: .JSON)
         
         self.performSegueWithIdentifier("showCourseNews", sender: nil)
     }
