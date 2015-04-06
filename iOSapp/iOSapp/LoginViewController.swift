@@ -38,7 +38,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let pwd = user["password"].stringValue
             //println(user["name"].stringValue)
             
-            
             if( pwd == password ) {
                 self.tempLabel.text = "Loggin in..."
                 if( user["type"].stringValue == "instructor" ){
@@ -53,6 +52,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func validate
     
     
     override func viewDidLoad() {
