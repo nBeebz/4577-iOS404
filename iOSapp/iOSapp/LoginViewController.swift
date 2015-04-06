@@ -39,15 +39,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //println(user["name"].stringValue)
             
             if( pwd == password ) {
-                self.tempLabel.text = "Loggin in..."
-                if( user["type"].stringValue == "instructor" ){
-                    self.performSegueWithIdentifier("iTerm", sender: nil);
-                }
-                else{
-                    self.performSegueWithIdentifier("sTerm", sender: nil);
-                }
-            } else {
-                self.tempLabel.text = "Invalid ID or password"
+            Data.sharedInstance.username = user["name"].stringValue
+            self.tempLabel.text = "Loggin in..."
+            if( user["type"].stringValue == "instructor" ){
+            self.performSegueWithIdentifier("iTerm", sender: nil);
+        }
+            else{
+            self.performSegueWithIdentifier("sTerm", sender: nil);
+            }
+        } else {
+            self.tempLabel.text = "Invalid ID or password"
             }
         }
     }

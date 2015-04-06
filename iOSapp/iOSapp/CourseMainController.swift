@@ -81,7 +81,7 @@ class CourseMainController: UIViewController
         if( isInstructor == 1) {
             let image = UIImage(named: "add139.png") as UIImage?
             let button   = UIButton.buttonWithType(UIButtonType.System) as UIButton
-            button.frame = CGRectMake(300, 45, 25, 25)
+            button.frame = CGRectMake(283, 92, 25, 25)
             button.setImage(image, forState: .Normal)
             button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
             
