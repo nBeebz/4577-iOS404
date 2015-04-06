@@ -37,7 +37,8 @@ class TermViewMasterController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
-        getClasses()
+        DataSource.getCourses( self.setClasses )
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,28 +46,10 @@ class TermViewMasterController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func getClasses()
-    {
-        //LOOK HERE NAV
-        var req = request(.GET, "https://api.mongolab.com/api/1/databases/sandbox/collections/courses?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa" )
-        
-        req.responseJSON { (request, response, body, error) in
-            // GET BODY HERE
-            var c:[String] = []
-            var array = JSON( body! ).arrayValue
-            let arr = JSON( body! ).arrayValue
-            
-            for obj in array{
-                c.append( obj["_id"].stringValue )
-            }
-            
-            self.setClasses( c )
-        }
-    }
     
-    func setClasses(c:[String])
+    func setClasses(courses:[String])
     {
-        self.classes = c
+        self.classes = courses
         // HENRY, UPDATE AND SHOW THE CLASS LIST HERE
         var count = self.classes.count
         for var i=0; i<count; ++i

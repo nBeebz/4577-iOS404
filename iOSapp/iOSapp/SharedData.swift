@@ -32,12 +32,36 @@ class Data {
     */
 
     var courseNo: String = ""
+    var user: User?
+}
+
+class DataSource {
+    var BASE_URL = "https://api.mongolab.com/api/1/databases/sandbox/collections/"
+    
+    
+    class func getCourses( handler: ([String])->() ){
+        println("HELLO")
+        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/courses?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa"
+        var req = request(.GET, url )
+        var c:[String] = []
+        req.responseJSON { (request, response, body, error) in
+            // GET BODY HERE
+            var array = JSON( body! ).arrayValue
+            let arr = JSON( body! ).arrayValue
+            
+            for obj in array{
+                c.append( obj["_id"].stringValue )
+            }
+            
+            handler( c )
+        }
+    }
 }
 
 struct User {
     var id: String
     var name: String
-    var courses:[String: Course]
+    var courses:[String: Course]?
     var type: String
 }
 
@@ -53,3 +77,4 @@ struct NewsItem {
     var author: String
     var text: String
 }
+
