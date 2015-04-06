@@ -66,7 +66,7 @@ class TermViewMasterController: UITableViewController {
     
     func setClasses(c:[String])
     {
-        self.classes = ["COMP 1111", "COMP 1112", "COMP 1113"]
+        self.classes = c
         // HENRY, UPDATE AND SHOW THE CLASS LIST HERE
         var count = self.classes.count
         for var i=0; i<count; ++i
