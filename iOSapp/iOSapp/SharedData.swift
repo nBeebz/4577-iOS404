@@ -40,7 +40,7 @@ class DataSource {
     
     
     class func getCourses( handler: ([String])->() ){
-        println("HELLO")
+        //println("HELLO")
         var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/courses?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa"
         var req = request(.GET, url )
         var c:[String] = []

@@ -13,13 +13,19 @@ import UIKit
 class CourseMainController: UIViewController
 {
     @IBOutlet weak var choiceLabel: UILabel!
+    
     @IBOutlet weak var segmentController: UISegmentedControl!
 
-    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var newsView: UIView!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var infoWebView: UIWebView!
-    
+
+    // labels for infoView
+    @IBOutlet weak var courseInfo: UILabel!
+    @IBOutlet weak var instrInfo: UILabel!
+    @IBOutlet weak var officeHrsInfo: UILabel!
+    @IBOutlet weak var marksInfo: UILabel!
+
     var courseNo: String!
     var courseName: String!
     var instrName: String!
@@ -43,8 +49,14 @@ class CourseMainController: UIViewController
             case 1 :
                 self.newsView.hidden = true;
                 self.infoView.hidden = false;
+                
                 //choiceLabel.text = "Info about the course"
-                infoLabel.text = " Instructor: \n\t \(instrName) \n\t \(instrEmail) \n\t \(office) \n\n Office Hours: \(officeHrs) \n\n Evaluation Breakdown: \(breakdown)"
+                
+                courseInfo.text = "\(courseName)"
+                instrInfo.text = " \(instrName) \n \(instrEmail) \n \(office)"
+                officeHrsInfo.text = officeHrs
+                marksInfo.text = breakdown
+                
                 break
             default :
                 break
@@ -55,12 +67,15 @@ class CourseMainController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        // NAV:  here's the hardcoded data that needs to be pulled from DB
         courseNo = "COMP 4711"
+        courseName = "Internet Software Development"
         instrName = "Jim Parry"
         instrEmail = "jim_parry@bcit.ca"
         office = "SW2 124"
-        officeHrs = "\n\t T: 1:30 - 2:30 \n\t Th: 1:30 - 3:30"
-        breakdown = "\n\t Assignments 25% \n\t Labs 30% \n\t Midterm 20% \n\t Final Exam 25%"
+        officeHrs = " T: 1:30 - 2:30 \n Th: 1:30 - 3:30"
+        breakdown = " Assignments 25% \n Labs 30% \n Midterm 20% \n Final Exam 25%"
         
         //Can change this to be way ever, creates button if true.
         if( isInstructor == 1) {
