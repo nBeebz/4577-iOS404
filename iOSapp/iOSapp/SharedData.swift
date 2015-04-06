@@ -33,6 +33,7 @@ class Data {
 
     var courseNo: String = ""
     var user: User?
+    var username: String = ""
 }
 
 class DataSource {

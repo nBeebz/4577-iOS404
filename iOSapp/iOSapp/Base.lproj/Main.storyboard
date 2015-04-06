@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -448,7 +447,7 @@
                                 <color key="textColor" red="0.9882352941176471" green="0.41568627450980394" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="62" y="206" width="62" height="21"/>
+                                    <rect key="frame" x="11" y="161" width="62" height="22"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWe-Al-wLG">
@@ -457,7 +456,7 @@
                                 <color key="textColor" red="0.9882352941176471" green="0.41568627450980394" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="62" y="136" width="33" height="21"/>
+                                    <rect key="frame" x="11" y="72" width="34" height="22"/>
                                 </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBy-GN-r9C">
@@ -466,13 +465,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="62" y="165" width="283" height="33"/>
+                                    <rect key="frame" x="11" y="102" width="300" height="34"/>
                                 </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjB-Yt-Q72">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="POST">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.97780994740000005" green="1" blue="0.97646244230000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -483,37 +482,27 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="39" y="477" width="92" height="50"/>
+                                </variation>
                                 <connections>
                                     <action selector="postNews:" destination="zJH-So-9cZ" eventType="touchUpInside" id="JVo-ET-xay"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add News" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9a-0c-KoX">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" red="0.9882352941176471" green="0.41568627450980394" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="160" y="72" width="99" height="21"/>
-                                </variation>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="contentField" translatesAutoresizingMaskIntoConstraints="NO" id="oGD-SP-BOt">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.86111111111111116" green="0.86111111111111116" blue="0.86111111111111116" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="62" y="235" width="283" height="210"/>
+                                    <rect key="frame" x="11" y="191" width="300" height="210"/>
                                 </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzv-sD-CQK">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Gt1-04-MmH"/>
-                                    <constraint firstAttribute="height" constant="50" id="gGe-E9-NGs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="CANCEL">
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="BACK">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.97780994740000005" green="1" blue="0.97646244230000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -523,17 +512,8 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Gt1-04-MmH"/>
-                                        <exclude reference="gGe-E9-NGs"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Gt1-04-MmH"/>
-                                        <include reference="gGe-E9-NGs"/>
-                                    </mask>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="181" y="477" width="89" height="50"/>
                                 </variation>
                                 <connections>
                                     <action selector="cancel:" destination="zJH-So-9cZ" eventType="touchUpInside" id="reV-Zd-EdP"/>
@@ -541,33 +521,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="UjB-Yt-Q72" firstAttribute="leading" secondItem="Z2p-kC-HfK" secondAttribute="leadingMargin" constant="24" id="34E-yr-DWB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hzv-sD-CQK" secondAttribute="trailing" constant="31" id="73E-pQ-r2b"/>
-                            <constraint firstItem="UjB-Yt-Q72" firstAttribute="firstBaseline" secondItem="hzv-sD-CQK" secondAttribute="baseline" id="EOg-V2-IAz"/>
-                            <constraint firstItem="UjB-Yt-Q72" firstAttribute="baseline" secondItem="hzv-sD-CQK" secondAttribute="firstBaseline" id="MdI-Sx-BfX"/>
-                            <constraint firstItem="UjB-Yt-Q72" firstAttribute="top" secondItem="hzv-sD-CQK" secondAttribute="top" id="YmW-Ez-ZGR"/>
-                            <constraint firstItem="hzv-sD-CQK" firstAttribute="leading" secondItem="UjB-Yt-Q72" secondAttribute="trailing" constant="13" id="dL3-Wa-af3"/>
-                            <constraint firstItem="TxZ-Jh-Fdd" firstAttribute="top" secondItem="hzv-sD-CQK" secondAttribute="bottom" constant="104" id="lif-jP-vLt"/>
-                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="bnI-ln-qyY"/>
                                 <exclude reference="LWe-Al-wLG"/>
                                 <exclude reference="PBy-GN-r9C"/>
                                 <exclude reference="UjB-Yt-Q72"/>
-                                <exclude reference="T9a-0c-KoX"/>
                                 <exclude reference="oGD-SP-BOt"/>
                                 <exclude reference="hzv-sD-CQK"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="lif-jP-vLt"/>
-                                <exclude reference="34E-yr-DWB"/>
-                                <exclude reference="EOg-V2-IAz"/>
-                                <exclude reference="MdI-Sx-BfX"/>
-                                <exclude reference="YmW-Ez-ZGR"/>
-                                <exclude reference="73E-pQ-r2b"/>
-                                <exclude reference="dL3-Wa-af3"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -576,18 +537,8 @@
                                 <include reference="LWe-Al-wLG"/>
                                 <include reference="PBy-GN-r9C"/>
                                 <include reference="UjB-Yt-Q72"/>
-                                <include reference="T9a-0c-KoX"/>
                                 <include reference="oGD-SP-BOt"/>
                                 <include reference="hzv-sD-CQK"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="lif-jP-vLt"/>
-                                <include reference="34E-yr-DWB"/>
-                                <include reference="EOg-V2-IAz"/>
-                                <include reference="MdI-Sx-BfX"/>
-                                <include reference="YmW-Ez-ZGR"/>
-                                <include reference="73E-pQ-r2b"/>
-                                <include reference="dL3-Wa-af3"/>
                             </mask>
                         </variation>
                     </view>
