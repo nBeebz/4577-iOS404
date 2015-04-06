@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class CourseMainController: UIViewController
 {
     @IBOutlet weak var choiceLabel: UILabel!
@@ -25,7 +27,7 @@ class CourseMainController: UIViewController
     var office: String!
     var officeHrs: String!
     var breakdown: String!
-    
+    var isInstructor = 1
     
     @IBAction func segmentChanged(sender: UISegmentedControl)
     {
@@ -60,10 +62,20 @@ class CourseMainController: UIViewController
         officeHrs = "\n\t T: 1:30 - 2:30 \n\t Th: 1:30 - 3:30"
         breakdown = "\n\t Assignments 25% \n\t Labs 30% \n\t Midterm 20% \n\t Final Exam 25%"
         
+        //Can change this to be way ever, creates button if true.
+        if( isInstructor == 1) {
+            let image = UIImage(named: "add139.png") as UIImage?
+            let button   = UIButton.buttonWithType(UIButtonType.System) as UIButton
+            button.frame = CGRectMake(300, 45, 25, 25)
+            button.setImage(image, forState: .Normal)
+            button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            self.view.addSubview(button)
+        }
+        
         let localFile = NSBundle.mainBundle().URLForResource("info", withExtension: "html")
         let myRequest = NSURLRequest(URL: localFile!);
         infoWebView.loadRequest(myRequest)
-        
         
         // set the navigation bar title to show the course
         self.navigationItem.title = courseNo
@@ -74,40 +86,12 @@ class CourseMainController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
-    @IBOutlet weak var addButton: UIButton!
-    @IBAction func addNews(sender: AnyObject) {
-        let alertController : UIAlertController = UIAlertController(
-            title: "Add News", message: "", preferredStyle: .Alert);
-        
-        let newsAction = UIAlertAction(title: "Add", style: .Default) { (_) in
-            let titleTextField = alertController.textFields![0] as UITextField
-            let newsTextField = alertController.textFields![1] as UITextField
-            
-            self.add(titleTextField.text, news: newsTextField.text)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in
-            println("cancel")
-        }
-        
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = "Title"
-        }
-        
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = "News"
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(newsAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
     
-    func add(title: String, news: String) {
-        println("Title: \(title) with news: \(news)")
+    
+    func buttonAction(sender:UIButton!)
+    {
+        self.performSegueWithIdentifier("addView", sender: nil)
     }
-
     /*
     // MARK: - Navigation
 
