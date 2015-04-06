@@ -78,7 +78,7 @@ class CourseMainController: UIViewController
         infoWebView.loadRequest(myRequest)
         
         // set the navigation bar title to show the course
-        self.navigationItem.title = courseNo
+        self.navigationItem.title = Data.sharedInstance.courseNo
     }
 
     override func didReceiveMemoryWarning()

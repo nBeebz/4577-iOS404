@@ -44,14 +44,6 @@ class TermViewMasterController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func insertNewObject(sender: AnyObject) {
-        
-        objects.insertObject(testVal, atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        
-    }
 
     func getClasses()
     {
@@ -63,7 +55,6 @@ class TermViewMasterController: UITableViewController {
             var c:[String] = []
             var array = JSON( body! ).arrayValue
             let arr = JSON( body! ).arrayValue
-            println( arr[0]["_id"].stringValue )
             
             for obj in array{
                 c.append( obj["_id"].stringValue )
@@ -75,12 +66,12 @@ class TermViewMasterController: UITableViewController {
     
     func setClasses(c:[String])
     {
-        self.classes = c
+        self.classes = ["COMP 1111", "COMP 1112", "COMP 1113"]
         // HENRY, UPDATE AND SHOW THE CLASS LIST HERE
         var count = self.classes.count
         for var i=0; i<count; ++i
         {
-            objects.insertObject(classes[0], atIndex: 0)
+            objects.insertObject(classes[i], atIndex: 0)
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
@@ -92,11 +83,7 @@ class TermViewMasterController: UITableViewController {
         
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as String
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
+                Data.sharedInstance.courseNo = self.objects[indexPath.row] as String
             }
         }
     }

@@ -31,6 +31,25 @@ class Data {
        using self.SharedData.{variable_here}, such as self.SharedData.name = "Bob" or println(self.SharedData.name)
     */
 
-    var name: String = ""
-    var age: Int = 0
+    var courseNo: String = ""
+}
+
+struct User {
+    var id: String
+    var name: String
+    var courses:[String: Course]
+    var type: String
+}
+
+struct Course {
+    var id: String
+    var description: String
+    var news: [NewsItem]
+    var info: [String: String]
+}
+
+struct NewsItem {
+    var date: NSDate
+    var author: String
+    var text: String
 }
