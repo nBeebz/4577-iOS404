@@ -52,7 +52,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func validate
     
     
     override func viewDidLoad() {
