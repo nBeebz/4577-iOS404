@@ -174,14 +174,16 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     {
         return self.newsArray.count
     }
+
     
     @IBOutlet var Title: UILabel!
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell : NewsItemCell!         = tableView.dequeueReusableCellWithIdentifier("NewsCell") as NewsItemCell
+        var cell : NewsItemCell! = tableView.dequeueReusableCellWithIdentifier("NewsCell") as NewsItemCell
+        var newsItem = self.newsArray[indexPath.row]
         //let object = objects[indexPath.row] as String
-        cell.Title.text = self.newsArray[indexPath.row]["title"].stringValue
-        cell.Content.text = self.newsArray[indexPath.row]["content"].stringValue
-        cell.Date.text = self.getNiceDate( self.newsArray[indexPath.row]["_id"].doubleValue as NSTimeInterval )
+        cell.Title.text = newsItem["title"].stringValue
+        cell.Content.text = newsItem["name"].stringValue
+        cell.Date.text = DataSource.getNiceDate( newsItem["_id"].doubleValue as NSTimeInterval )
         return cell
     }
     
@@ -190,14 +192,13 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         return true
     }
     
-    func getNiceDate( timestamp: NSTimeInterval ) -> String {
-        var formatter = NSDateFormatter()
-        formatter.timeStyle = NSDateFormatterStyle.MediumStyle
-        formatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        var locale = NSLocale(localeIdentifier: "en_US")
-        var date = NSDate(timeIntervalSince1970: timestamp)
-        return formatter.stringFromDate(date)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showNews" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                Data.sharedInstance.activeNews = self.newsArray[indexPath.row] as JSON
+            }
+        }
     }
-    
     
 }

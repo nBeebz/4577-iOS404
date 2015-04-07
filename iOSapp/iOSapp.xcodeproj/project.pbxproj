@@ -23,6 +23,7 @@
 		343682251ACB37210034FEB7 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343682241ACB37210034FEB7 /* SharedData.swift */; };
 		5970B2D31AB8C9C300BD2CB4 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5970B2D21AB8C9C300BD2CB4 /* Alamofire.swift */; };
 		5970B2D51AB8C9CC00BD2CB4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5970B2D41AB8C9CC00BD2CB4 /* SwiftyJSON.swift */; };
+		59DE12BB1AD4579700FA9C59 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE12BA1AD4579700FA9C59 /* NewsViewController.swift */; };
 		DEE0136C1A81F472007FFD61 /* TermViewMasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136B1A81F472007FFD61 /* TermViewMasterController.swift */; };
 		DEE0136E1A81F4A5007FFD61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		343682241ACB37210034FEB7 /* SharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		5970B2D21AB8C9C300BD2CB4 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		5970B2D41AB8C9CC00BD2CB4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		59DE12BA1AD4579700FA9C59 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		DEE0136B1A81F472007FFD61 /* TermViewMasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermViewMasterController.swift; sourceTree = "<group>"; };
 		DEE0136D1A81F4A5007FFD61 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +120,7 @@
 				1BFDC0281A78E77600703708 /* LaunchScreen.xib */,
 				1BFDC01D1A78E77600703708 /* Supporting Files */,
 				19E91FD31AD38BA1004EAE78 /* NewsItemCell.swift */,
+				59DE12BA1AD4579700FA9C59 /* NewsViewController.swift */,
 			);
 			path = iOSapp;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				1BFDC0221A78E77600703708 /* LoginViewController.swift in Sources */,
 				1BFDC0201A78E77600703708 /* AppDelegate.swift in Sources */,
 				DEE0136C1A81F472007FFD61 /* TermViewMasterController.swift in Sources */,
+				59DE12BB1AD4579700FA9C59 /* NewsViewController.swift in Sources */,
 				19F482B81AD2415E00BF3FA0 /* AddNewsController.swift in Sources */,
 				343682251ACB37210034FEB7 /* SharedData.swift in Sources */,
 				DEE0136E1A81F4A5007FFD61 /* DetailViewController.swift in Sources */,

@@ -33,6 +33,7 @@ class Data {
 
     var activeCourse: JSON = []
     var activeUser: JSON = []
+    var activeNews: JSON = []
 }
 
 class DataSource {
@@ -69,10 +70,9 @@ class DataSource {
     }
     
     class func getNews( handler: ([JSON])->() ){
-        println("HELLO")
-        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/news?q={\"course\":"
+        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/news?q={\"course\":\""
             + Data.sharedInstance.activeCourse["_id"].stringValue
-            + "}&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa"
+            + "\"}&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa"
         url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         var req = request(.GET, url )
         var c:[JSON] = []
@@ -86,6 +86,15 @@ class DataSource {
             
             handler( c )
         }
+    }
+    
+    class func getNiceDate( timestamp: NSTimeInterval ) -> String {
+        var formatter = NSDateFormatter()
+        formatter.timeStyle = NSDateFormatterStyle.MediumStyle
+        formatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        var locale = NSLocale(localeIdentifier: "en_US")
+        var date = NSDate(timeIntervalSince1970: timestamp)
+        return formatter.stringFromDate(date)
     }
 }
 
