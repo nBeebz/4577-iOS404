@@ -96,5 +96,21 @@ class DataSource {
         var date = NSDate(timeIntervalSince1970: timestamp)
         return formatter.stringFromDate(date)
     }
+    
+    class func verifyUser( id: String, password: String, handler: (Bool)->() ){
+        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/students?q={\"_id\":\"" + id + "\"}&fo=true&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa";
+        url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let req = request(.GET, url )
+        
+        req.responseJSON
+            { (request, response, body, error) in
+                // GET BODY HERE
+                var user = JSON( body! )
+                Data.sharedInstance.activeUser = user
+                // check if password entered matches the password stored
+                var pwd = user["password"].stringValue
+                handler( password == pwd )
+            }
+    }
 }
 

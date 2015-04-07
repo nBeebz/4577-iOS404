@@ -333,7 +333,6 @@
                         <outlet property="pwdTextField" destination="6hF-SZ-4ea" id="Ky2-pC-7Qn"/>
                         <outlet property="tempLabel" destination="ccz-h0-Rkn" id="W5I-s5-k2d"/>
                         <segue destination="iaL-AZ-xmH" kind="show" identifier="sTerm" id="uxz-Rk-iaF"/>
-                        <segue destination="iaL-AZ-xmH" kind="show" identifier="iTerm" id="q83-ZQ-5kI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -1008,7 +1007,6 @@
         <image name="subset.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="q83-ZQ-5kI"/>
         <segue reference="3Fn-TC-EHY"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,33 +26,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             tempLabel.text = "Please type in your ID and password."
             return;
         }
-        
-        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/students?q={\"_id\":\"" + user + "\"}&fo=true&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa";
-        url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        let req = request(.GET, url )
-        
-        req.responseJSON
-        { (request, response, body, error) in
-            // GET BODY HERE
-            var user = JSON( body! )
-            let pwd = user["password"].stringValue
-            //println(user["name"].stringValue)
-            
-            // check if password entered matches the password stored
-            if( pwd == password )
-            {
-                Data.sharedInstance.activeUser = user
-                self.tempLabel.text = "Loggin in..."
-                self.performSegueWithIdentifier("sTerm", sender: nil);
-            }
-            else
-            {
-                self.tempLabel.text = "Invalid ID or password.  Try again."
-            }
-        }
+        DataSource.verifyUser( user, password: password, handler: self.loginStatus )
     }
     
-    
+    func loginStatus(success: Bool){
+        if(success){
+            self.performSegueWithIdentifier("sTerm", sender: nil);
+        }else{
+            self.tempLabel.text = "Invalid ID or password.  Try again."
+        }
+    }
     
     override func viewDidLoad()
     {
