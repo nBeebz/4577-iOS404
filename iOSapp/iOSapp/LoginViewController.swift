@@ -31,7 +31,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         let req = request(.GET, url )
         
-        req.responseJSON { (request, response, body, error) in
+        req.responseJSON
+        { (request, response, body, error) in
             // GET BODY HERE
             var user = JSON( body! )
             let pwd = user["password"].stringValue

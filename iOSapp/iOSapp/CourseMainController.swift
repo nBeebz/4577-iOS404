@@ -71,24 +71,47 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     {
         super.viewDidLoad()
         var course = Data.sharedInstance.activeCourse
-        // NAV:  here's the hardcoded data that needs to be pulled from DB
+        
+        // get data
         courseNo = course["_id"].stringValue
         courseName = course["courseName"].stringValue
         instrName = course["instructorName"].stringValue
         instrEmail = course["instructorEmail"].stringValue
         office = course["officeLocation"].stringValue
+        
         var dict = course["officeHours"].dictionaryValue
+        
         officeHrs = ""
-        for (key, value) in dict {
+        var counter1 = 0
+        for (key, value) in dict
+        {
             officeHrs = officeHrs + key + ": " + value.stringValue + "\n"
+            counter1++
         }
-        
+
         breakdown = ""
+        var counter2 = 0
         dict = course["markBreakdown"].dictionaryValue
-        for (key, value) in dict {
+        for (key, value) in dict
+        {
             breakdown = breakdown + key + ": " + value.stringValue + "\n"
+            counter2++
         }
-        
+
+        // add extra newlines if not enough lines of data
+        // otherwise text is centered vertically in the label
+        // and the extra white space makes it look unpolished
+        while counter1 < 3
+        {
+            officeHrs = officeHrs + "\n"
+            counter1++
+        }
+        while counter2 < 6
+        {
+            breakdown = breakdown + "\n"
+            counter2++
+        }
+
         // creates the + button if true.
         if( Data.sharedInstance.activeUser["instructor"].boolValue )
         {
@@ -113,7 +136,6 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func setNews(news:[JSON])
     {
-
         var indexPaths: [NSIndexPath] = []
         
         for var i=0; i<news.count; ++i
