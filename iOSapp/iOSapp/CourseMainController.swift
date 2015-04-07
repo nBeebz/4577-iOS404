@@ -43,21 +43,20 @@ class CourseMainController: UIViewController
             case 0 :
                 self.newsView.hidden = false;
                 self.infoView.hidden = true;
-                choiceLabel.text = 	"News and stuff"
                 break
+            
             // info view
             case 1 :
                 self.newsView.hidden = true;
                 self.infoView.hidden = false;
                 
-                //choiceLabel.text = "Info about the course"
-                
                 courseInfo.text = "\(courseName)"
                 instrInfo.text = " \(instrName) \n \(instrEmail) \n \(office)"
                 officeHrsInfo.text = officeHrs
                 marksInfo.text = breakdown
-                
                 break
+            
+            // default
             default :
                 break
         }
@@ -77,8 +76,9 @@ class CourseMainController: UIViewController
         officeHrs = " T: 1:30 - 2:30 \n Th: 1:30 - 3:30"
         breakdown = " Assignments 25% \n Labs 30% \n Midterm 20% \n Final Exam 25%"
         
-        //Can change this to be way ever, creates button if true.
-        if( isInstructor == 1) {
+        // creates the + button if true.
+        if( isInstructor == 1)
+        {
             let image = UIImage(named: "add139.png") as UIImage?
             let button   = UIButton.buttonWithType(UIButtonType.System) as UIButton
             button.frame = CGRectMake(283, 92, 25, 25)
@@ -92,7 +92,7 @@ class CourseMainController: UIViewController
         let myRequest = NSURLRequest(URL: localFile!);
         infoWebView.loadRequest(myRequest)
         
-        // set the navigation bar title to show the course
+        // set the navigation bar title to show the course number
         self.navigationItem.title = Data.sharedInstance.courseNo
     }
 
@@ -101,20 +101,9 @@ class CourseMainController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
-    
-    
     func buttonAction(sender:UIButton!)
     {
         self.performSegueWithIdentifier("addView", sender: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

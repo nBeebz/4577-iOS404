@@ -2,29 +2,19 @@
 //  AddNewsController.swift
 //  iOSapp
 //
-//  Created by Best Team on 2015-04-05.
+//  Created by Michael on 2015-04-05.
 //  Copyright (c) 2015 Team 404. All rights reserved.
 //
 import UIKit
 
-class AddNewsController: UIViewController
+class AddNewsController: UIViewController, UITextViewDelegate
 {
-
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-    }
     @IBOutlet weak var titleField: UITextView!
     @IBOutlet weak var contentField: UITextView!
     
-    @IBAction func postNews(sender: AnyObject) {
-        
+    @IBAction func postNews(sender: AnyObject)
+    {
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitMonth | .CalendarUnitYear | .CalendarUnitDay, fromDate: date)
@@ -50,8 +40,31 @@ class AddNewsController: UIViewController
         self.performSegueWithIdentifier("showCourseNews", sender: nil)
     }
     
-    @IBAction func cancel(sender: AnyObject) {
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        contentField.delegate = self
+    }
+    
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func cancel(sender: AnyObject)
+    {
         self.performSegueWithIdentifier("showCourseNews", sender: nil)
+    }
+    
+    // dismiss keyboard when the RETURN key is pressed
+    func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool
+    {
+        if(replacementText == "\n")
+        {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 
 }
