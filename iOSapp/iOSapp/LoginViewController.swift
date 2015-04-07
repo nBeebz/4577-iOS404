@@ -40,18 +40,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             // check if password entered matches the password stored
             if( pwd == password )
             {
-                Data.sharedInstance.username = user["name"].stringValue
+                Data.sharedInstance.activeUser = user
                 self.tempLabel.text = "Loggin in..."
-                
-                // check if instructor or student
-                if( user["type"].stringValue == "instructor" )
-                {
-                    self.performSegueWithIdentifier("iTerm", sender: nil);
-                }
-                else
-                {
-                    self.performSegueWithIdentifier("sTerm", sender: nil);
-                }
+                self.performSegueWithIdentifier("sTerm", sender: nil);
             }
             else
             {

@@ -31,51 +31,61 @@ class Data {
        using self.SharedData.{variable_here}, such as self.SharedData.name = "Bob" or println(self.SharedData.name)
     */
 
-    var courseNo: String = ""
-    var user: User?
-    var username: String = ""
+    var activeCourse: JSON = []
+    var activeUser: JSON = []
 }
 
 class DataSource {
-    var BASE_URL = "https://api.mongolab.com/api/1/databases/sandbox/collections/"
     
-    
-    class func getCourses( handler: ([String])->() ){
+    class func getCourses( handler: ([JSON])->() ){
         //println("HELLO")
-        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/courses?apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa"
+        
+        var array = Data.sharedInstance.activeUser["courses"].arrayValue
+        var courseList = "["
+        for( var i = 0; i<array.count; i++){
+            courseList += "\"" + array[i].stringValue + "\""
+            if( i<array.count-1 ){
+                courseList += ","
+            }
+        }
+        courseList += "]"
+
+        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/courses?q={\"_id\":{$in:"
+            + courseList
+            + "}}&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa"
+        url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         var req = request(.GET, url )
-        var c:[String] = []
+        var c:[JSON] = []
         req.responseJSON { (request, response, body, error) in
             // GET BODY HERE
             var array = JSON( body! ).arrayValue
-            let arr = JSON( body! ).arrayValue
             
             for obj in array{
-                c.append( obj["_id"].stringValue )
+                c.append( obj )
             }
             
             handler( c )
         }
     }
-}
-
-struct User {
-    var id: String
-    var name: String
-    var courses:[String: Course]?
-    var type: String
-}
-
-struct Course {
-    var id: String
-    var description: String
-    var news: [NewsItem]
-    var info: [String: String]
-}
-
-struct NewsItem {
-    var date: NSDate
-    var author: String
-    var text: String
+    
+    class func getNews( handler: ([JSON])->() ){
+        println("HELLO")
+        var url = "https://api.mongolab.com/api/1/databases/sandbox/collections/news?q={\"course\":"
+            + Data.sharedInstance.activeCourse["_id"].stringValue
+            + "}&apiKey=bup2ZBWGDC-IlRrpRsjTtJqiM_QKSmKa"
+        url =  url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        var req = request(.GET, url )
+        var c:[JSON] = []
+        req.responseJSON { (request, response, body, error) in
+            // GET BODY HERE
+            var array = JSON( body! ).arrayValue
+            
+            for obj in array{
+                c.append( obj )
+            }
+            
+            handler( c )
+        }
+    }
 }
 

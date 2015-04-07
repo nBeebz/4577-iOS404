@@ -12,9 +12,8 @@ import UIKit
 class TermViewMasterController: UITableViewController {
     
     var detailViewController: DetailViewController? = nil
-    var objects = NSMutableArray()
     let testVal = "COMP 4977"
-    var classes:[String]!
+    var classes:[JSON]! = []
     var index = 0
     
     override func awakeFromNib() {
@@ -47,17 +46,17 @@ class TermViewMasterController: UITableViewController {
     }
 
     
-    func setClasses(courses:[String])
+    func setClasses(courses:[JSON])
     {
-        self.classes = courses
         // HENRY, UPDATE AND SHOW THE CLASS LIST HERE
-        var count = self.classes.count
-        for var i=0; i<count; ++i
+        var indexPaths: [NSIndexPath] = []
+        
+        for var i=0; i<courses.count; ++i
         {
-            objects.insertObject(classes[i], atIndex: 0)
-            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            self.classes.append(courses[i])
+            indexPaths.append( NSIndexPath(forRow: i, inSection: 0) )
         }
+        self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
         
     }
     // MARK: - Segues
@@ -66,7 +65,7 @@ class TermViewMasterController: UITableViewController {
         
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                Data.sharedInstance.courseNo = self.objects[indexPath.row] as String
+                Data.sharedInstance.activeCourse = self.classes[indexPath.row] as JSON
             }
         }
     }
@@ -78,16 +77,16 @@ class TermViewMasterController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return classes.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        
         //let object = objects[indexPath.row] as String
         
         if (index < classes.count) {
-            cell.textLabel!.text = classes[index++]
+            cell.textLabel!.text = classes[index]["_id"].stringValue
+            cell.detailTextLabel?.text = classes[index++]["courseName"].string
         }
         
         return cell
@@ -100,7 +99,7 @@ class TermViewMasterController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            objects.removeObjectAtIndex(indexPath.row)
+            classes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

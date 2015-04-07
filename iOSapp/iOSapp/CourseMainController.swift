@@ -8,13 +8,6 @@
 
 import UIKit
 
-struct NewsStruct{
-    var index : Int
-    
-    var title : String
-    var content : String
-    var datetime : String
-}
 
 class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -32,7 +25,7 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var marksInfo: UILabel!
     
     @IBOutlet weak var Test: NewsItemCell!
-    var newsArray : [NewsStruct] = []
+    var newsArray : [JSON] = []
     
     var courseNo: String!
     var courseName: String!
@@ -77,18 +70,27 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        var course = Data.sharedInstance.activeCourse
         // NAV:  here's the hardcoded data that needs to be pulled from DB
-        courseNo = "COMP 4711"
-        courseName = "Internet Software Development"
-        instrName = "Jim Parry"
-        instrEmail = "jim_parry@bcit.ca"
-        office = "SW2 124"
-        officeHrs = " T: 1:30 - 2:30 \n Th: 1:30 - 3:30"
-        breakdown = " Assignments 25% \n Labs 30% \n Midterm 20% \n Final Exam 25%"
+        courseNo = course["_id"].stringValue
+        courseName = course["courseName"].stringValue
+        instrName = course["instructorName"].stringValue
+        instrEmail = course["instructorEmail"].stringValue
+        office = course["officeLocation"].stringValue
+        var dict = course["officeHours"].dictionaryValue
+        officeHrs = ""
+        for (key, value) in dict {
+            officeHrs = officeHrs + key + ": " + value.stringValue + "\n"
+        }
+        
+        breakdown = ""
+        dict = course["markBreakdown"].dictionaryValue
+        for (key, value) in dict {
+            breakdown = breakdown + key + ": " + value.stringValue + "\n"
+        }
         
         // creates the + button if true.
-        if( isInstructor == 1)
+        if( Data.sharedInstance.activeUser["instructor"].boolValue )
         {
             let image = UIImage(named: "add139.png") as UIImage?
             let button   = UIButton.buttonWithType(UIButtonType.System) as UIButton
@@ -104,27 +106,24 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         infoWebView.loadRequest(myRequest)
         
         // set the navigation bar title to show the course number
-        self.navigationItem.title = Data.sharedInstance.courseNo
+        self.navigationItem.title = Data.sharedInstance.activeCourse["_id"].stringValue
         
-        var newsArray : [NewsStruct] = []
-        //The "data"
-        var one : NewsStruct = NewsStruct(
-            index        : 0,
-            title        : "One",
-            content      : "This is the first one",
-            datetime     : "2015/5/5 at 12:12"
-        )
-        var two : NewsStruct = NewsStruct(
-            index        : 1,
-            title        : "Hello",
-            content      : "Hello hello hello",
-            datetime     : "2015/4/5 at 11:11"
-        )
-        //Appending it to the newsArray
-        self.newsArray.append(one)
-        self.newsArray.append(two)
+        DataSource.getNews( self.setNews )
     }
 
+    func setNews(news:[JSON])
+    {
+
+        var indexPaths: [NSIndexPath] = []
+        
+        for var i=0; i<news.count; ++i
+        {
+            self.newsArray.append(news[i])
+            indexPaths.append( NSIndexPath(forRow: i, inSection: 0) )
+        }
+        self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+    }
+    
     @IBOutlet weak var TitleLab: UILabel!
     @IBOutlet weak var ContentLab: UILabel!
     @IBOutlet weak var DateLab: UILabel!
@@ -158,15 +157,24 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell : NewsItemCell!         = tableView.dequeueReusableCellWithIdentifier("NewsCell") as NewsItemCell
         //let object = objects[indexPath.row] as String
-        cell.Title.text = self.newsArray[indexPath.row].title
-        cell.Content.text = self.newsArray[indexPath.row].content
-        cell.Date.text = self.newsArray[indexPath.row].datetime
+        cell.Title.text = self.newsArray[indexPath.row]["title"].stringValue
+        cell.Content.text = self.newsArray[indexPath.row]["content"].stringValue
+        cell.Date.text = self.getNiceDate( self.newsArray[indexPath.row]["_id"].doubleValue as NSTimeInterval )
         return cell
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
+    }
+    
+    func getNiceDate( timestamp: NSTimeInterval ) -> String {
+        var formatter = NSDateFormatter()
+        formatter.timeStyle = NSDateFormatterStyle.MediumStyle
+        formatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        var locale = NSLocale(localeIdentifier: "en_US")
+        var date = NSDate(timeIntervalSince1970: timestamp)
+        return formatter.stringFromDate(date)
     }
     
     
