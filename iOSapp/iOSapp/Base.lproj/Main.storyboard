@@ -54,8 +54,7 @@
                                         <exclude reference="WmT-OZ-bjD"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="496" width="400" height="21"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="WmT-OZ-bjD"/>
                                     </mask>
@@ -800,7 +799,7 @@
         <image name="subset.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="q83-ZQ-5kI"/>
         <segue reference="3Fn-TC-EHY"/>
-        <segue reference="uxz-Rk-iaF"/>
     </inferredMetricsTieBreakers>
 </document>
