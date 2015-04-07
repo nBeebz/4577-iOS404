@@ -8,12 +8,17 @@
 
 import UIKit
 
+struct NewsStruct{
+    var index : Int
+    
+    var title : String
+    var content : String
+    var datetime : String
+}
 
-
-class CourseMainController: UIViewController
+class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var choiceLabel: UILabel!
-    
     @IBOutlet weak var segmentController: UISegmentedControl!
 
     @IBOutlet weak var newsView: UIView!
@@ -25,7 +30,10 @@ class CourseMainController: UIViewController
     @IBOutlet weak var instrInfo: UILabel!
     @IBOutlet weak var officeHrsInfo: UILabel!
     @IBOutlet weak var marksInfo: UILabel!
-
+    
+    @IBOutlet weak var Test: NewsItemCell!
+    var newsArray : [NewsStruct] = []
+    
     var courseNo: String!
     var courseName: String!
     var instrName: String!
@@ -34,7 +42,9 @@ class CourseMainController: UIViewController
     var officeHrs: String!
     var breakdown: String!
     var isInstructor = 1
-    
+    let items: [[String]] = [
+    ["1"],
+    ["2"]]
     @IBAction func segmentChanged(sender: UISegmentedControl)
     {
         switch 	segmentController.selectedSegmentIndex
@@ -63,6 +73,7 @@ class CourseMainController: UIViewController
 
     }
     
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -94,8 +105,30 @@ class CourseMainController: UIViewController
         
         // set the navigation bar title to show the course number
         self.navigationItem.title = Data.sharedInstance.courseNo
+        
+        var newsArray : [NewsStruct] = []
+        //The "data"
+        var one : NewsStruct = NewsStruct(
+            index        : 0,
+            title        : "One",
+            content      : "This is the first one",
+            datetime     : "2015/5/5 at 12:12"
+        )
+        var two : NewsStruct = NewsStruct(
+            index        : 1,
+            title        : "Hello",
+            content      : "Hello hello hello",
+            datetime     : "2015/4/5 at 11:11"
+        )
+        //Appending it to the newsArray
+        self.newsArray.append(one)
+        self.newsArray.append(two)
     }
 
+    @IBOutlet weak var TitleLab: UILabel!
+    @IBOutlet weak var ContentLab: UILabel!
+    @IBOutlet weak var DateLab: UILabel!
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -105,5 +138,36 @@ class CourseMainController: UIViewController
     {
         self.performSegueWithIdentifier("addView", sender: nil)
     }
-
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 135
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int ) -> Int
+    {
+        return self.newsArray.count
+    }
+    
+    @IBOutlet var Title: UILabel!
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell : NewsItemCell!         = tableView.dequeueReusableCellWithIdentifier("NewsCell") as NewsItemCell
+        //let object = objects[indexPath.row] as String
+        cell.Title.text = self.newsArray[indexPath.row].title
+        cell.Content.text = self.newsArray[indexPath.row].content
+        cell.Date.text = self.newsArray[indexPath.row].datetime
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    
 }
