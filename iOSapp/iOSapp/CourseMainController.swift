@@ -70,6 +70,10 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         var course = Data.sharedInstance.activeCourse
         
+        instrInfo.userInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: "emailPopup:")
+        instrInfo.addGestureRecognizer(tapGesture)
+        
         // get data
         courseNo = course["_id"].stringValue
         courseName = course["courseName"].stringValue
@@ -197,6 +201,12 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
                 Data.sharedInstance.activeNews = self.newsArray[indexPath.row] as JSON
             }
         }
+    }
+    
+    func emailPopup(sender:UITapGestureRecognizer){
+        let url = NSURL(string: "mailto:\(instrEmail!)")
+        UIApplication.sharedApplication().openURL(url!)
+        println("Email going to: \(instrEmail)")
     }
     
 }
