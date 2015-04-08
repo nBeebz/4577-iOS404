@@ -115,12 +115,12 @@
 				1C1D1BF91AA2D16D0094E9D3 /* CourseMainController.swift */,
 				343682241ACB37210034FEB7 /* SharedData.swift */,
 				19F482B71AD2415E00BF3FA0 /* AddNewsController.swift */,
+				19E91FD31AD38BA1004EAE78 /* NewsItemCell.swift */,
+				59DE12BA1AD4579700FA9C59 /* NewsViewController.swift */,
 				1BFDC0231A78E77600703708 /* Main.storyboard */,
 				1BFDC0261A78E77600703708 /* Images.xcassets */,
 				1BFDC0281A78E77600703708 /* LaunchScreen.xib */,
 				1BFDC01D1A78E77600703708 /* Supporting Files */,
-				19E91FD31AD38BA1004EAE78 /* NewsItemCell.swift */,
-				59DE12BA1AD4579700FA9C59 /* NewsViewController.swift */,
 			);
 			path = iOSapp;
 			sourceTree = "<group>";

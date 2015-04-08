@@ -35,9 +35,7 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     var officeHrs: String!
     var breakdown: String!
     var isInstructor = 1
-    let items: [[String]] = [
-    ["1"],
-    ["2"]]
+
     @IBAction func segmentChanged(sender: UISegmentedControl)
     {
         switch 	segmentController.selectedSegmentIndex

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -9,7 +9,7 @@
         <!--login-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="login" id="vXZ-lx-hvc" customClass="LoginViewController" customModule="iOSapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" title="login" id="vXZ-lx-hvc" customClass="LoginViewController" customModule="iOSapp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -339,7 +339,7 @@
             </objects>
             <point key="canvasLocation" x="7.5" y="429"/>
         </scene>
-        <!--Term View-->
+        <!--Courses-->
         <scene sceneID="ZKr-OV-NFD">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="rth-1D-qhz" customClass="TermViewMasterController" customModule="iOSapp" sceneMemberID="viewController">
@@ -388,7 +388,25 @@
                             <outlet property="delegate" destination="rth-1D-qhz" id="XNI-aK-D35"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Term View" id="cZg-Fm-M6g"/>
+                    <navigationItem key="navigationItem" title="Courses" id="cZg-Fm-M6g">
+                        <barButtonItem key="leftBarButtonItem" width="20" style="plain" id="2ev-jK-MgT">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="259" verticalHuggingPriority="259" horizontalCompressionResistancePriority="772" verticalCompressionResistancePriority="792" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5XO-Vg-yaq">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="rth-1D-qhz" eventType="touchUpInside" id="iqZ-3J-3lF"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="logout" id="ehr-tW-92A"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjD-CH-gw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -950,53 +968,6 @@
             </objects>
             <point key="canvasLocation" x="1647" y="1767"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="sCy-Fm-mVN">
-            <objects>
-                <tableViewController id="I59-og-S5f" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Uq1-Eb-hrQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mjz-VN-GkX">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mjz-VN-GkX" id="MF0-1z-u2V">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q36-c6-6sY">
-                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="26" y="11" width="42" height="21"/>
-                                            </variation>
-                                        </label>
-                                    </subviews>
-                                    <variation key="default">
-                                        <mask key="subviews">
-                                            <exclude reference="Q36-c6-6sY"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="widthClass=compact">
-                                        <mask key="subviews">
-                                            <include reference="Q36-c6-6sY"/>
-                                        </mask>
-                                    </variation>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="I59-og-S5f" id="Ue0-62-zon"/>
-                            <outlet property="delegate" destination="I59-og-S5f" id="Idg-2c-Uo1"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Aq0-v9-FIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2524.5" y="1747"/>
-        </scene>
         <!--News View Controller-->
         <scene sceneID="AUo-Q6-cmr">
             <objects>
@@ -1084,19 +1055,19 @@
                                 <exclude reference="HxN-mO-Xgp"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="5rZ-ck-hMk"/>
+                                <exclude reference="DXi-iw-jPj"/>
+                                <exclude reference="zhd-Ah-vLn"/>
                                 <exclude reference="1Yo-oy-Ax4"/>
                                 <exclude reference="3Y4-p9-piX"/>
                                 <exclude reference="Fxo-4Y-JRp"/>
                                 <exclude reference="XNW-1l-Yhr"/>
                                 <exclude reference="Yj0-Rp-N3j"/>
-                                <exclude reference="Ic4-6r-yfz"/>
+                                <exclude reference="OAI-j4-i8Y"/>
                                 <exclude reference="Mio-hB-UKR"/>
                                 <exclude reference="bGY-yN-emj"/>
                                 <exclude reference="ijc-Wb-X0V"/>
-                                <exclude reference="5rZ-ck-hMk"/>
-                                <exclude reference="DXi-iw-jPj"/>
-                                <exclude reference="zhd-Ah-vLn"/>
-                                <exclude reference="OAI-j4-i8Y"/>
+                                <exclude reference="Ic4-6r-yfz"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1107,19 +1078,19 @@
                                 <include reference="HxN-mO-Xgp"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="5rZ-ck-hMk"/>
+                                <include reference="DXi-iw-jPj"/>
+                                <include reference="zhd-Ah-vLn"/>
                                 <include reference="1Yo-oy-Ax4"/>
                                 <include reference="3Y4-p9-piX"/>
                                 <include reference="Fxo-4Y-JRp"/>
                                 <include reference="XNW-1l-Yhr"/>
                                 <include reference="Yj0-Rp-N3j"/>
-                                <include reference="Ic4-6r-yfz"/>
+                                <include reference="OAI-j4-i8Y"/>
                                 <include reference="Mio-hB-UKR"/>
                                 <include reference="bGY-yN-emj"/>
                                 <include reference="ijc-Wb-X0V"/>
-                                <include reference="5rZ-ck-hMk"/>
-                                <include reference="DXi-iw-jPj"/>
-                                <include reference="zhd-Ah-vLn"/>
-                                <include reference="OAI-j4-i8Y"/>
+                                <include reference="Ic4-6r-yfz"/>
                             </mask>
                         </variation>
                     </view>

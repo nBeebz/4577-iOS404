@@ -40,6 +40,13 @@ class TermViewMasterController: UITableViewController {
 
     }
     
+    @IBAction func logout(sender: AnyObject) {
+                var storyboard = UIStoryboard(name : "Main", bundle: nil);
+                var controller = storyboard.instantiateViewControllerWithIdentifier("login") as UIViewController;
+                let dstController = controller as LoginViewController;
+                self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
