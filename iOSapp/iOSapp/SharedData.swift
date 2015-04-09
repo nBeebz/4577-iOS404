@@ -90,7 +90,7 @@ class DataSource {
     
     class func getNiceDate( timestamp: NSTimeInterval ) -> String {
         var formatter = NSDateFormatter()
-        formatter.timeStyle = NSDateFormatterStyle.MediumStyle
+        formatter.timeStyle = NSDateFormatterStyle.ShortStyle
         formatter.dateStyle = NSDateFormatterStyle.MediumStyle
         var locale = NSLocale(localeIdentifier: "en_US")
         var date = NSDate(timeIntervalSince1970: timestamp)

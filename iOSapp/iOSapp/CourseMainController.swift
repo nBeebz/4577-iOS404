@@ -21,6 +21,7 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     // labels for infoView
     @IBOutlet weak var courseInfo: UILabel!
     @IBOutlet weak var instrInfo: UILabel!
+    @IBOutlet weak var emailInfo: UILabel!
     @IBOutlet weak var officeHrsInfo: UILabel!
     @IBOutlet weak var marksInfo: UILabel!
     
@@ -52,7 +53,8 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.infoView.hidden = false;
                 
                 courseInfo.text = "\(courseName)"
-                instrInfo.text = " \(instrName) \n \(instrEmail) \n \(office)"
+                instrInfo.text = " \(instrName) \n \(office)"
+                emailInfo.text = " \(instrEmail)"
                 officeHrsInfo.text = officeHrs
                 marksInfo.text = breakdown
                 break
@@ -70,9 +72,9 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         var course = Data.sharedInstance.activeCourse
         
-        instrInfo.userInteractionEnabled = true
+        emailInfo.userInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: "emailPopup:")
-        instrInfo.addGestureRecognizer(tapGesture)
+        emailInfo.addGestureRecognizer(tapGesture)
         
         // get data
         courseNo = course["_id"].stringValue

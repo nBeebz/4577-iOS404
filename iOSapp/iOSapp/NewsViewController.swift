@@ -20,8 +20,8 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         var newsItem = Data.sharedInstance.activeNews
         text.text = newsItem["content"].stringValue
-        date.text = "Posted on: " + DataSource.getNiceDate(newsItem["_id"].doubleValue as NSTimeInterval)
-        author.text = "By: " + newsItem["name"].stringValue
+        date.text = "Posted on " + DataSource.getNiceDate(newsItem["_id"].doubleValue as NSTimeInterval)
+        author.text = "By " + newsItem["name"].stringValue
         titled.text = newsItem["title"].stringValue
     }
 }
