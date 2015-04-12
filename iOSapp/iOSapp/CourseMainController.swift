@@ -25,6 +25,7 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var officeHrsInfo: UILabel!
     @IBOutlet weak var marksInfo: UILabel!
     
+    @IBOutlet var webview: UIWebView!
     @IBOutlet weak var Test: NewsItemCell!
     var newsArray : [JSON] = []
     
@@ -51,12 +52,14 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
             case 1 :
                 self.newsView.hidden = true;
                 self.infoView.hidden = false;
+                self.webview.loadHTMLString(loadInfoHTML(), baseURL: nil)
+                self.webview.hidden = false;
                 
-                courseInfo.text = "\(courseName)"
-                instrInfo.text = " \(instrName) \n \(office)"
-                emailInfo.text = " \(instrEmail)"
-                officeHrsInfo.text = officeHrs
-                marksInfo.text = breakdown
+//                courseInfo.text = "\(courseName)"
+//                instrInfo.text = " \(instrName) \n \(office)"
+//                emailInfo.text = " \(instrEmail)"
+//                officeHrsInfo.text = officeHrs
+//                marksInfo.text = breakdown
                 break
             
             // default
@@ -70,51 +73,8 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        var course = Data.sharedInstance.activeCourse
         
-        emailInfo.userInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: "emailPopup:")
-        emailInfo.addGestureRecognizer(tapGesture)
-        
-        // get data
-        courseNo = course["_id"].stringValue
-        courseName = course["courseName"].stringValue
-        instrName = course["instructorName"].stringValue
-        instrEmail = course["instructorEmail"].stringValue
-        office = course["officeLocation"].stringValue
-        
-        var dict = course["officeHours"].dictionaryValue
-        
-        officeHrs = ""
-        var counter1 = 0
-        for (key, value) in dict
-        {
-            officeHrs = officeHrs + key + ": " + value.stringValue + "\n"
-            counter1++
-        }
-
-        breakdown = ""
-        var counter2 = 0
-        dict = course["markBreakdown"].dictionaryValue
-        for (key, value) in dict
-        {
-            breakdown = breakdown + key + ": " + value.stringValue + "\n"
-            counter2++
-        }
-
-        // add extra newlines if not enough lines of data
-        // otherwise text is centered vertically in the label
-        // and the extra white space makes it look unpolished
-        while counter1 < 3
-        {
-            officeHrs = officeHrs + "\n"
-            counter1++
-        }
-        while counter2 < 6
-        {
-            breakdown = breakdown + "\n"
-            counter2++
-        }
+        //self.loadInfo();
 
         // creates the + button if true.
         if( Data.sharedInstance.activeUser["instructor"].boolValue )
@@ -136,6 +96,7 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.title = Data.sharedInstance.activeCourse["_id"].stringValue
         
         DataSource.getNews( self.setNews )
+        
     }
 
     func setNews(news:[JSON])
@@ -158,6 +119,94 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     {
         super.didReceiveMemoryWarning()
     }
+    
+    func loadInfo()
+    {
+        var course = Data.sharedInstance.activeCourse
+
+        emailInfo.userInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: "emailPopup:")
+        emailInfo.addGestureRecognizer(tapGesture)
+        
+        // get data
+        courseNo = course["_id"].stringValue
+        courseName = course["courseName"].stringValue
+        instrName = course["instructorName"].stringValue
+        instrEmail = course["instructorEmail"].stringValue
+        office = course["officeLocation"].stringValue
+        
+        var dict = course["officeHours"].dictionaryValue
+        
+        officeHrs = ""
+        var counter1 = 0
+        for (key, value) in dict
+        {
+            officeHrs = officeHrs + key + ": " + value.stringValue + "\n"
+            counter1++
+        }
+        
+        breakdown = ""
+        var counter2 = 0
+        dict = course["markBreakdown"].dictionaryValue
+        for (key, value) in dict
+        {
+            breakdown = breakdown + key + ": " + value.stringValue + "\n"
+            counter2++
+        }
+        
+        // add extra newlines if not enough lines of data
+        // otherwise text is centered vertically in the label
+        // and the extra white space makes it look unpolished
+        while counter1 < 3
+        {
+            officeHrs = officeHrs + "\n"
+            counter1++
+        }
+        while counter2 < 6
+        {
+            breakdown = breakdown + "\n"
+            counter2++
+        }
+    }
+    
+    func loadInfoHTML() -> String
+    {
+        var str: String! = ""
+        var course = Data.sharedInstance.activeCourse
+        
+        
+        // get data
+        courseNo = h3("Course Name") + course["_id"].stringValue
+        courseName = "<br/>" + course["courseName"].stringValue
+        instrName = h3("Instructor") + course["instructorName"].stringValue
+        instrEmail = "<br/>" + course["instructorEmail"].stringValue
+        office = h3("Office") + course["officeLocation"].stringValue
+        
+        var dict = course["officeHours"].dictionaryValue
+        
+        officeHrs = h3("Office Hours")
+        var counter1 = 0
+        for (key, value) in dict
+        {
+            officeHrs = officeHrs + key + ": " + value.stringValue + "<br/>"
+            counter1++
+        }
+        
+        breakdown = h3("Marks Rubric")
+        var counter2 = 0
+        dict = course["markBreakdown"].dictionaryValue
+        for (key, value) in dict
+        {
+            breakdown = breakdown + key + ": " + value.stringValue + "<br/>"
+            counter2++
+        }
+        
+        str = courseNo + courseName + instrName + instrEmail + office + officeHrs + breakdown
+        
+        return str;
+    }
+    
+    func h3( str: String ) -> String{ return "<h3>"+str+"</h3>" }
     
     func buttonAction(sender:UIButton!)
     {
