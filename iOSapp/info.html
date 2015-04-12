@@ -1,3 +1,4 @@
+<!--
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
@@ -23,6 +24,47 @@
             \(breakdown)
         </blockquote>
         </p>
+    </body>
+    
+</html>
+-->
+
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+            <script>
+                var setInstructor = function (instructor) {
+                    document.getElementById("name") = instructor.name;
+                    document.getElementById("email") = instructor.email;
+                    document.getElementById("office") = instructor.office;
+                };
+            
+            document.write(instructor.name);
+                </script>
+            </head>
+    
+    <body>
+        
+        <p><strong>Instructor:</strong>
+        <blockquote>
+            <span id="name"></span><br>
+            <span id="email"></span><br>
+            <span id="office"></span><br>
+        </blockquote>
+        </p>
+
+        <p><strong>Office Hours:</strong>
+        <blockquote>
+            \(officeHrs)
+        </blockquote>
+        </p>
+
+        <p><strong>Evaluation Breakdown:</strong>
+        <blockquote>
+            \(breakdown)
+        </blockquote>
+        </p>
+        
     </body>
     
 </html>

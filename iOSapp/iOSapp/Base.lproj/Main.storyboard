@@ -685,14 +685,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rU-eM-Bop" userLabel="InfoView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PB2-Xy-P7e">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="15" y="8" width="370" height="445"/>
-                                        </variation>
-                                    </webView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiG-Zm-LL0">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiG-Zm-LL0">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -773,10 +766,16 @@
                                             <rect key="frame" x="40" y="302" width="320" height="150"/>
                                         </variation>
                                     </label>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PB2-Xy-P7e">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="15" y="8" width="370" height="445"/>
+                                        </variation>
+                                    </webView>
                                 </subviews>
                                 <variation key="default">
                                     <mask key="subviews">
-                                        <exclude reference="PB2-Xy-P7e"/>
                                         <exclude reference="aiG-Zm-LL0"/>
                                         <exclude reference="zks-ZA-MLd"/>
                                         <exclude reference="GAx-ul-GEH"/>
@@ -786,12 +785,12 @@
                                         <exclude reference="a0d-6R-Svr"/>
                                         <exclude reference="lVc-c9-4W9"/>
                                         <exclude reference="zdW-N1-V9k"/>
+                                        <exclude reference="PB2-Xy-P7e"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="135" width="400" height="467"/>
                                     <mask key="subviews">
-                                        <include reference="PB2-Xy-P7e"/>
                                         <include reference="aiG-Zm-LL0"/>
                                         <include reference="zks-ZA-MLd"/>
                                         <include reference="GAx-ul-GEH"/>
@@ -801,6 +800,7 @@
                                         <include reference="a0d-6R-Svr"/>
                                         <include reference="lVc-c9-4W9"/>
                                         <include reference="zdW-N1-V9k"/>
+                                        <include reference="PB2-Xy-P7e"/>
                                     </mask>
                                 </variation>
                             </view>

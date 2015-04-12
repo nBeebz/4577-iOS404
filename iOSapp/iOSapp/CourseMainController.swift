@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import ObjectiveC
+import Foundation
 
-
-class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate
 {
     @IBOutlet weak var choiceLabel: UILabel!
     @IBOutlet weak var segmentController: UISegmentedControl!
@@ -36,6 +37,8 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     var officeHrs: String!
     var breakdown: String!
     var isInstructor = 1
+    
+
 
     @IBAction func segmentChanged(sender: UISegmentedControl)
     {
@@ -115,6 +118,17 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
             breakdown = breakdown + "\n"
             counter2++
         }
+        
+        let instrObj: AnyObject =
+            ["name": instrName, "email": instrEmail, "office": office]
+        
+        
+        let object: AnyObject                  = instrObj
+        let json                    = JSONStringify(object)
+        infoWebView.infoJSON        = json
+        infoWebView.delegate        = self
+        
+        
 
         // creates the + button if true.
         if( Data.sharedInstance.activeUser["instructor"].boolValue )
@@ -136,6 +150,18 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.title = Data.sharedInstance.activeCourse["_id"].stringValue
         
         DataSource.getNews( self.setNews )
+    }
+    
+    func JSONStringify(value: AnyObject, prettyPrinted: Bool = false) -> String {
+        var options = prettyPrinted ? NSJSONWritingOptions.PrettyPrinted : nil
+        if NSJSONSerialization.isValidJSONObject(value) {
+            if let data = NSJSONSerialization.dataWithJSONObject(value, options: options, error: nil) {
+                if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                    return string
+                }
+            }
+        }
+        return ""
     }
 
     func setNews(news:[JSON])
@@ -211,4 +237,40 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         println("Email going to: \(instrEmail)")
     }
     
+    func webViewDidFinishLoad(infoWebView: UIWebView)
+    {
+        if infoWebView.stringByEvaluatingJavaScriptFromString("document.readyState") == "complete"
+            
+        {
+            // inject the JSON into the html
+            let json = infoWebView.infoJSON
+            infoWebView.stringByEvaluatingJavaScriptFromString("setInstructor\(json)")!
+        }
+        else
+        {
+            // can't interact with a page that hasn't loaded... seems to only happen at startup
+            infoWebView.reload()
+        }
+    }
+
 }
+
+var AssociatedObjectHandle: UInt8 = 0
+
+extension UIWebView
+{
+
+    var infoJSON : String
+    {
+        get
+        {
+            return objc_getAssociatedObject(self, &AssociatedObjectHandle) as String
+        }
+        set
+        {
+            objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+        }
+    }
+}
+
+
