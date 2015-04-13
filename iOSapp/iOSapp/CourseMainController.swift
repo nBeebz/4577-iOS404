@@ -27,8 +27,9 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var marksInfo: UILabel!
     
     @IBOutlet weak var Test: NewsItemCell!
+
+    // variables for holding data
     var newsArray : [JSON] = []
-    
     var courseNo: String!
     var courseName: String!
     var instrName: String!
@@ -38,7 +39,6 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     var breakdown: String!
     var isInstructor = 1
     
-
 
     @IBAction func segmentChanged(sender: UISegmentedControl)
     {
@@ -70,11 +70,15 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
+// ---------------------------- stuff for labels -------------------------------- //
         var course = Data.sharedInstance.activeCourse
         
+        // launch mail app when email tapped on
         emailInfo.userInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: "emailPopup:")
         emailInfo.addGestureRecognizer(tapGesture)
@@ -118,16 +122,7 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
             breakdown = breakdown + "\n"
             counter2++
         }
-        
-        let instrObj: AnyObject =
-            ["name": instrName, "email": instrEmail, "office": office]
-        
-        
-        let object: AnyObject                  = instrObj
-        let json                    = JSONStringify(object)
-        infoWebView.infoJSON        = json
-        infoWebView.delegate        = self
-        
+// ----------------------------------- END -------------------------------------- //
         
 
         // creates the + button if true.
@@ -142,9 +137,24 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
             self.view.addSubview(button)
         }
         
+        
+// ---------------------------- stuff for webview -------------------------------- //
+
+        // test object to see if data can be extracted to populate webview
+        let instrObj: AnyObject = ["name": instrName, "email": instrEmail, "office": office]
+        
+        let object: AnyObject       = instrObj
+        let json                    = JSONStringify(object)
+        println(json);
+        
+        infoWebView.infoJSON        = json
+        infoWebView.delegate        = self
+        
         let localFile = NSBundle.mainBundle().URLForResource("info", withExtension: "html")
         let myRequest = NSURLRequest(URL: localFile!);
         infoWebView.loadRequest(myRequest)
+// ----------------------------------- END -------------------------------------- //
+        
         
         // set the navigation bar title to show the course number
         self.navigationItem.title = Data.sharedInstance.activeCourse["_id"].stringValue
@@ -152,6 +162,8 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         DataSource.getNews( self.setNews )
     }
     
+    // convert a JSON object into a string
+    // taken from internet
     func JSONStringify(value: AnyObject, prettyPrinted: Bool = false) -> String {
         var options = prettyPrinted ? NSJSONWritingOptions.PrettyPrinted : nil
         if NSJSONSerialization.isValidJSONObject(value) {
@@ -163,80 +175,8 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return ""
     }
-
-    func setNews(news:[JSON])
-    {
-        var indexPaths: [NSIndexPath] = []
-        
-        for var i=0; i<news.count; ++i
-        {
-            self.newsArray.append(news[i])
-            indexPaths.append( NSIndexPath(forRow: i, inSection: 0) )
-        }
-        self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
-    }
     
-    @IBOutlet weak var TitleLab: UILabel!
-    @IBOutlet weak var ContentLab: UILabel!
-    @IBOutlet weak var DateLab: UILabel!
-    
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func buttonAction(sender:UIButton!)
-    {
-        self.performSegueWithIdentifier("addView", sender: nil)
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-    {
-        return 135
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int ) -> Int
-    {
-        return self.newsArray.count
-    }
-
-    
-    @IBOutlet var Title: UILabel!
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell : NewsItemCell! = tableView.dequeueReusableCellWithIdentifier("NewsCell") as NewsItemCell
-        var newsItem = self.newsArray[indexPath.row]
-        //let object = objects[indexPath.row] as String
-        cell.Title.text = newsItem["title"].stringValue
-        cell.Content.text = newsItem["name"].stringValue
-        cell.Date.text = DataSource.getNiceDate( newsItem["_id"].doubleValue as NSTimeInterval )
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "showNews" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                Data.sharedInstance.activeNews = self.newsArray[indexPath.row] as JSON
-            }
-        }
-    }
-    
-    func emailPopup(sender:UITapGestureRecognizer){
-        let url = NSURL(string: "mailto:\(instrEmail!)")
-        UIApplication.sharedApplication().openURL(url!)
-        println("Email going to: \(instrEmail)")
-    }
-    
+    // check if webview finished loading
     func webViewDidFinishLoad(infoWebView: UIWebView)
     {
         if infoWebView.stringByEvaluatingJavaScriptFromString("document.readyState") == "complete"
@@ -252,8 +192,91 @@ class CourseMainController: UIViewController, UITableViewDelegate, UITableViewDa
             infoWebView.reload()
         }
     }
+    
+    func emailPopup(sender:UITapGestureRecognizer){
+        let url = NSURL(string: "mailto:\(instrEmail!)")
+        UIApplication.sharedApplication().openURL(url!)
+        println("Email going to: \(instrEmail)")
+    }
 
-}
+    func setNews(news:[JSON])
+    {
+        var indexPaths: [NSIndexPath] = []
+        
+        for var i=0; i<news.count; ++i
+        {
+            self.newsArray.append(news[i])
+            indexPaths.append( NSIndexPath(forRow: i, inSection: 0) )
+        }
+        self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+    }
+    
+    //@IBOutlet weak var TitleLab: UILabel!
+    //@IBOutlet weak var ContentLab: UILabel!
+    //@IBOutlet weak var DateLab: UILabel!
+    //@IBOutlet var Title: UILabel!
+
+// --------------------------- functions for tableview ------------------------------- //
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 135
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int ) -> Int
+    {
+        return self.newsArray.count
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        var cell : NewsItemCell! = tableView.dequeueReusableCellWithIdentifier("NewsCell") as NewsItemCell
+        var newsItem = self.newsArray[indexPath.row]
+        //let object = objects[indexPath.row] as String
+        cell.Title.text = newsItem["title"].stringValue
+        cell.Content.text = newsItem["name"].stringValue
+        cell.Date.text = DataSource.getNiceDate( newsItem["_id"].doubleValue as NSTimeInterval )
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+// ----------------------------------- END -------------------------------------- //
+
+    
+    
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func buttonAction(sender:UIButton!)
+    {
+        self.performSegueWithIdentifier("addView", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "showNews" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                Data.sharedInstance.activeNews = self.newsArray[indexPath.row] as JSON
+            }
+        }
+    }
+    
+
+    
+} // end CourseMainController class
+
+
+// ------------------------- extension for webview ----------------------------- //
 
 var AssociatedObjectHandle: UInt8 = 0
 
@@ -272,5 +295,5 @@ extension UIWebView
         }
     }
 }
-
+// ----------------------------------- END -------------------------------------- //
 
